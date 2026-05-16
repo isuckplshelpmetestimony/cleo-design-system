@@ -1,0 +1,46 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import ProseSection from '../../components/docs/ProseSection.astro';
+---
+
+<DocsLayout title="Illustration" description="Cleo illustration language">
+  <div class="prose">
+    <h1>Illustration language</h1>
+    <p class="page-lead">
+      Lim Heng Swee–inspired register: flat planes, cool-deep palette, one warm accent, generous
+      negative space. Journey and arrival — never tools or medical imagery.
+    </p>
+
+    <ProseSection title="Rules">
+      <ul>
+        <li>Flat planes of solid color — no gradients, no textures</li>
+        <li>Maximum 5 colors per illustration, always from Quiet Authority palette</li>
+        <li>One warm accent element (amber sun, lamp, plate) surrounded by cool restraint</li>
+        <li>Hard clean edges between color zones</li>
+        <li>Organic forms — never geometric abstract constructions</li>
+        <li>Subject matter: journey, openness, arrival</li>
+      </ul>
+    </ProseSection>
+  </div>
+
+  <div class="wide-band" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:700px">
+    <div class="panel-art" style="border-radius:12px;overflow:hidden;aspect-ratio:4/3">
+      <svg viewBox="0 0 320 240" fill="none" style="width:100%;height:100%"><rect width="320" height="240" fill="#2E4057"/><path d="M0 120 Q80 80 160 120 T320 100 L320 240 L0 240 Z" fill="#0F1F30"/><circle cx="260" cy="50" r="28" fill="#D4841A"/></svg>
+    </div>
+    <div class="panel-art" style="border-radius:12px;overflow:hidden;aspect-ratio:4/3">
+      <svg viewBox="0 0 320 240" fill="none" style="width:100%;height:100%"><rect width="320" height="240" fill="#E2E5EA"/><path d="M40 180 C80 120 120 200 160 140 S240 100 280 160" stroke="#2E4057" stroke-width="3" fill="none"/><circle cx="160" cy="60" r="20" fill="#D4841A"/></svg>
+    </div>
+  </div>
+
+  <div class="prose">
+    <ProseSection title="Prohibited">
+      <ul>
+        <li>Stock photography of smiling clinicians</li>
+        <li>Dashboard screenshots as marketing visuals</li>
+        <li>Bright saturated illustration styles</li>
+        <li>Geometric abstract art</li>
+        <li>Medical iconography (stethoscopes, crosses, anatomy diagrams)</li>
+      </ul>
+    </ProseSection>
+  </div>
+</DocsLayout>

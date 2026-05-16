@@ -1,0 +1,28 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+---
+
+<DocsLayout title="Errors & warnings" description="Cleo error and warning state patterns">
+  <div class="prose">
+    <h1>Error and warning states</h1>
+    <p class="page-lead">Errors are rare, plain, and actionable. Warnings are guardians, not alarms.</p>
+
+    <h2>Warnings</h2>
+    <p>Amber border and background tint. Plain English explanation. Suggested fix inline. Used for denial risk — Frame 6.</p>
+
+    <h2>Errors</h2>
+    <p>Reserved for blocked submission or system failure. Muted red — never bright #FF0000. State what happened and the single next step.</p>
+
+    <h2>Never</h2>
+    <ul>
+      <li>Modal stacks for recoverable issues</li>
+      <li>Exclamation icons on every validation</li>
+      <li>Red for denial suggestions (that's what competitors do)</li>
+    </ul>
+
+    <PhilosophyCallout>
+      <p>Frame 2 trauma around denials means red triggers fight-or-flight. Amber says "let's look at this together."</p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

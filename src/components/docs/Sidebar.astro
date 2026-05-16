@@ -1,0 +1,140 @@
+---
+import { navSections, isActive } from '../../config/nav';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<aside class="sidebar" transition:persist="cleo-sidebar">
+  <div class="sidebar-brand">
+    <a href="/" class="brand-link">Cleo</a>
+    <p class="brand-sub">Design System</p>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Design system">
+    {
+      navSections.map((section) => (
+        <div class="nav-section">
+          <h2 class="nav-section-title">{section.title}</h2>
+          <ul class="nav-list">
+            {section.items.map((item) => {
+              const active = isActive(item.href, currentPath);
+              return (
+                <li>
+                  <a href={item.href} class:list={['nav-link', { active }]}>
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))
+    }
+  </nav>
+</aside>
+
+<script>
+  function updateSidebarActive() {
+    const path = window.location.pathname;
+    document.querySelectorAll('.sidebar .nav-link').forEach((link) => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+      const active =
+        href === '/' ? path === '/' || path === '/index.html' : path === href || path.startsWith(`${href}/`);
+      link.classList.toggle('active', active);
+    });
+  }
+
+  updateSidebarActive();
+  document.addEventListener('astro:page-load', updateSidebarActive);
+</script>
+
+<style>
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--color-surface-sidebar);
+    padding: var(--space-8) var(--space-6);
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .sidebar-brand {
+    margin-bottom: var(--space-10);
+  }
+
+  .brand-link {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-midnight);
+    text-decoration: none;
+  }
+
+  .brand-sub {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+  }
+
+  .nav-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .nav-section-title {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    margin: 0 0 var(--space-3);
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list li {
+    margin: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    margin-left: calc(-1 * var(--space-4));
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    border-left: 2px solid transparent;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-link:hover {
+    color: var(--color-midnight);
+  }
+
+  .nav-link.active {
+    color: var(--color-midnight);
+    border-left-color: var(--color-amber);
+  }
+
+  @media (max-width: 900px) {
+    .sidebar {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>

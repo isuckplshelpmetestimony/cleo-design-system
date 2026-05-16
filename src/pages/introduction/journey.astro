@@ -1,0 +1,97 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import StoryboardGrid from '../../components/docs/StoryboardGrid.astro';
+import StoryboardPanel from '../../components/docs/StoryboardPanel.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import {
+  Frame01,
+  Frame02,
+  Frame03,
+  Frame04,
+  Frame05,
+  Frame06,
+  Frame07,
+  Frame08,
+  Frame09,
+} from '../../components/illustrations/frames/StoryboardArt';
+
+const storyboard = [
+  { n: 1, beat: 'Still charting', moment: '10pm. The clinic is dark. They are still in the chart.', monologue: 'I just want to go to sleep.', Art: Frame01 },
+  { n: 2, beat: 'Another denial', moment: 'A letter that says they did everything right — and still lost.', monologue: 'I did everything right.', Art: Frame02 },
+  { n: 3, beat: 'Searching', moment: 'Scrolling through options that all look identical.', monologue: "They're all the same.", Art: Frame03 },
+  { n: 4, beat: 'The headline lands', moment: 'Copy that names the wound before the product.', monologue: "That's exactly how I feel.", Art: Frame04 },
+  { n: 5, beat: 'Watching the demo', moment: 'Cautious attention. Proof over promise.', monologue: 'Okay but does it actually work?', Art: Frame05 },
+  { n: 6, beat: 'Denial prevention', moment: 'Something no competitor showed them.', monologue: 'Nobody else does this.', Art: Frame06 },
+  { n: 7, beat: 'Done before 5pm', moment: 'Notes finished. The interface steps back.', monologue: "This isn't supposed to happen.", Art: Frame07 },
+  { n: 8, beat: 'Home for dinner', moment: 'Tuesday. Sun still up. The table is set.', monologue: 'I forgot this was possible.', Art: Frame08 },
+  { n: 9, beat: 'Tells another PT', moment: 'Word of mouth from trust, not hype.', monologue: 'You need to try this.', Art: Frame09 },
+];
+---
+
+<DocsLayout title="The journey" description="Nine-frame emotional journey of a physical therapist">
+  <div class="prose">
+    <h1>The therapist's journey</h1>
+    <hr class="section-accent-rule" />
+    <p class="page-lead">
+      Nine frames from charting at 10pm to home for dinner on a Tuesday. This storyboard is the
+      emotional spine of Cleo's design system.
+    </p>
+  </div>
+
+  <StoryboardGrid>
+    {
+      storyboard.map(({ n, beat, moment, monologue, Art }) => (
+        <StoryboardPanel beat={beat} moment={moment} monologue={monologue} frameNumber={n}>
+          <Art />
+        </StoryboardPanel>
+      ))
+    }
+  </StoryboardGrid>
+
+  <div class="prose">
+    <h2 id="mapping">How design maps to the journey</h2>
+
+    <h3 id="frame-4">Hero names the wound first — Frame 4</h3>
+    <p>
+      Headlines lead with recognition ("Still charting at 10pm?") before capability. The user must
+      feel seen before they feel sold to.
+    </p>
+
+    <h3 id="frame-1-3">Cool, restrained palette — Frames 1–3</h3>
+    <p>
+      The user is exhausted, not excited. Cleo uses cool slate and midnight tones — never warm
+      energetic oranges or bright startup blues. Color reads as calm authority, not hype.
+    </p>
+
+    <h3 id="frame-8">Single amber accent — Frame 8</h3>
+    <p>
+      Amber appears once per surface — the one moment of warmth in a composed cool world, mirroring
+      dinner at home. Overuse destroys the effect.
+    </p>
+
+    <h3 id="frame-4-type">Humanist serif — Frame 4</h3>
+    <p>
+      Headlines use a serif with bracketed serifs and wide proportions: authority and warmth
+      simultaneously, earned not performed.
+    </p>
+
+    <h3 id="frame-7-8">Slow, quiet motion — Frames 7–8</h3>
+    <p>
+      As work completes, the interface steps back. Note completion screens get quieter, not louder.
+      Motion is relief, not delight.
+    </p>
+
+    <h3 id="no-bold">No bold weight</h3>
+    <p>
+      Confidence comes from scale and space, not shouting. Only regular (400) and medium (500) in
+      the type system.
+    </p>
+
+    <PhilosophyCallout>
+      <p>
+        Frame 8 is always the destination. When in doubt, ask which frame your design decision
+        serves — and whether it moves the user toward home on time.
+      </p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

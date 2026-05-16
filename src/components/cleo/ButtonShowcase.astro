@@ -1,0 +1,64 @@
+---
+/** Static button demos — always visible without client JS */
+---
+
+<div class="button-showcase">
+  <section class="button-showcase__group" aria-labelledby="button-variants-heading">
+    <h4 id="button-variants-heading" class="button-showcase__heading">Variants</h4>
+    <div class="button-demo">
+      <div class="button-demo__item">
+        <button type="button" class="cleo-btn cleo-btn--primary">Sign note</button>
+        <span class="button-demo__label">Primary</span>
+      </div>
+      <div class="button-demo__item">
+        <button type="button" class="cleo-btn cleo-btn--amber">Sign and submit</button>
+        <span class="button-demo__label">Amber CTA (max one per page)</span>
+      </div>
+      <div class="button-demo__item">
+        <button type="button" class="cleo-btn cleo-btn--ghost">Edit draft</button>
+        <span class="button-demo__label">Ghost</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="button-showcase__group" aria-labelledby="button-disabled-heading">
+    <h4 id="button-disabled-heading" class="button-showcase__heading">Disabled</h4>
+    <div class="button-demo button-demo--states">
+      <div class="button-demo__item">
+        <button type="button" class="cleo-btn cleo-btn--primary" disabled>Sign note</button>
+        <span class="button-demo__label">Primary — disabled</span>
+      </div>
+    </div>
+    <p class="button-showcase__note">45% opacity. Same dimensions as primary. No hover or press feedback.</p>
+  </section>
+</div>
+
+<style>
+  .button-showcase__group + .button-showcase__group {
+    margin-top: var(--space-8);
+    padding-top: var(--space-8);
+    border-top: var(--border-hairline);
+  }
+
+  .button-showcase__heading {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    margin: 0 0 var(--space-4);
+  }
+
+  .button-showcase__note {
+    font-size: 0.875rem;
+    color: var(--color-steel);
+    margin: var(--space-4) 0 0;
+  }
+
+  .button-demo--states {
+    margin-top: 0;
+    padding-top: var(--space-6);
+    border-top: none;
+  }
+</style>

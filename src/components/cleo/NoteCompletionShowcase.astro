@@ -1,0 +1,169 @@
+---
+import './note-flow.css';
+import './note-completion-showcase.css';
+
+const waveBars = Array.from({ length: 12 }, (_, i) => ({
+  x: i * 22 + 4,
+  y: 24 - (8 + (i % 4) * 4),
+  h: 16 + (i % 5) * 6,
+  opacity: 0.4 + (i % 3) * 0.15,
+}));
+---
+
+<div class="note-completion-showcase">
+  <section class="note-completion-showcase__section" aria-labelledby="note-arc-heading">
+    <h4 id="note-arc-heading" class="note-completion-showcase__heading">The arc</h4>
+    <p class="note-completion-showcase__caption" style="margin-top: 0; margin-bottom: var(--space-4)">
+      Five screens — each quieter than the last.
+    </p>
+    <div class="note-flow-arc">
+      <div class="note-flow-arc__item">
+        <p class="note-flow-arc__label">1 · Recording</p>
+        <div class="note-flow-arc__mini">
+          <svg class="note-flow-arc__mini-wave" viewBox="0 0 64 24" aria-hidden>
+            {
+              waveBars.slice(0, 6).map((b, i) => (
+                <rect
+                  x={i * 10 + 2}
+                  y={12 - b.h / 4}
+                  width={4}
+                  height={b.h / 2}
+                  fill="#2E4057"
+                  opacity={b.opacity}
+                  rx={1}
+                />
+              ))
+            }
+          </svg>
+        </div>
+      </div>
+      <div class="note-flow-arc__item">
+        <p class="note-flow-arc__label">2 · Transcribing</p>
+        <div class="note-flow-arc__mini">
+          <div class="note-flow-arc__mini-progress"><span></span></div>
+        </div>
+      </div>
+      <div class="note-flow-arc__item">
+        <p class="note-flow-arc__label">3 · Review</p>
+        <p class="note-flow-arc__mini">Note text + ghost edits</p>
+      </div>
+      <div class="note-flow-arc__item">
+        <p class="note-flow-arc__label">4 · Sign</p>
+        <p class="note-flow-arc__mini">Amber CTA</p>
+      </div>
+      <div class="note-flow-arc__item">
+        <p class="note-flow-arc__label">5 · Complete</p>
+        <div class="note-flow-arc__mini note-flow-arc__mini--complete">
+          <svg class="note-flow-arc__check" viewBox="0 0 24 24" aria-hidden>
+            <circle cx="12" cy="12" r="11" fill="none" stroke="#D4841A" stroke-width="1.5"></circle>
+            <path d="M7 12l3 3 7-7" fill="none" stroke="#D4841A" stroke-width="1.5"></path>
+          </svg>
+          <span>Signed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="note-completion-showcase__section" aria-labelledby="note-interactive-heading">
+    <h4 id="note-interactive-heading" class="note-completion-showcase__heading">Interactive flow</h4>
+    <p class="note-completion-showcase__caption" style="margin-top: 0; margin-bottom: var(--space-4)">
+      Click each step to preview the screen.
+    </p>
+
+    <div class="note-flow note-flow-showcase">
+      <input
+        type="radio"
+        name="note-step"
+        id="note-step-recording"
+        class="note-flow__radio"
+        checked
+      />
+      <input type="radio" name="note-step" id="note-step-transcribing" class="note-flow__radio" />
+      <input type="radio" name="note-step" id="note-step-review" class="note-flow__radio" />
+      <input type="radio" name="note-step" id="note-step-sign" class="note-flow__radio" />
+      <input type="radio" name="note-step" id="note-step-complete" class="note-flow__radio" />
+
+      <nav class="note-flow__tabs" aria-label="Note completion states">
+        <label for="note-step-recording" class="note-flow__tab">Recording</label>
+        <label for="note-step-transcribing" class="note-flow__tab">Transcribing</label>
+        <label for="note-step-review" class="note-flow__tab">Review</label>
+        <label for="note-step-sign" class="note-flow__tab">Sign</label>
+        <label for="note-step-complete" class="note-flow__tab">Complete</label>
+      </nav>
+
+      <div class="note-flow__stage">
+        <div class="note-flow__panel note-flow__panel--recording note-flow__recording">
+          <p class="note-flow__hint">Listening…</p>
+          <svg class="note-flow__wave" viewBox="0 0 280 48" aria-hidden>
+            {
+              waveBars.map((b) => (
+                <rect
+                  x={b.x}
+                  y={b.y}
+                  width={8}
+                  height={b.h}
+                  fill="#2E4057"
+                  opacity={b.opacity}
+                  rx={2}
+                />
+              ))
+            }
+          </svg>
+        </div>
+
+        <div class="note-flow__panel note-flow__panel--transcribing note-flow__transcribing">
+          <p class="note-flow__hint">Transcribing your visit…</p>
+          <div class="note-flow__progress">
+            <div class="note-flow__progress-fill" style="width: 62%"></div>
+          </div>
+        </div>
+
+        <div class="note-flow__panel note-flow__panel--review note-flow__review">
+          <p class="note-flow__note-text">
+            Patient presents with left shoulder pain, 6 weeks duration. ROM limited in abduction.
+            Plan: progressive strengthening, manual therapy 2x/week.
+          </p>
+          <div class="note-flow__review-actions">
+            <button type="button" class="cleo-btn cleo-btn--ghost">Edit section</button>
+            <button type="button" class="cleo-btn cleo-btn--ghost">Add objective</button>
+          </div>
+        </div>
+
+        <div class="note-flow__panel note-flow__panel--sign note-flow__sign">
+          <p class="note-flow__hint">Ready to sign and submit</p>
+          <p class="note-flow__note-text" style="font-size: 0.9375rem">
+            Maria Chen — Initial evaluation — May 16, 2026
+          </p>
+          <button type="button" class="cleo-btn cleo-btn--amber">Sign and submit</button>
+        </div>
+
+        <div class="note-flow__panel note-flow__panel--complete note-flow__complete">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden style="margin-bottom: 1rem">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="#D4841A" stroke-width="1.5"></circle>
+            <path d="M7 12l3 3 7-7" fill="none" stroke="#D4841A" stroke-width="1.5"></path>
+          </svg>
+          <h4 class="note-flow__complete-title">Maria Chen — Initial evaluation</h4>
+          <p class="note-flow__timestamp">Signed · 4:47 PM</p>
+        </div>
+      </div>
+
+      <div class="note-flow__footnotes">
+        <p class="note-flow__step-note note-flow__step-note--1">
+          Step 1 of 5 — Each state is quieter than the last.
+        </p>
+        <p class="note-flow__step-note note-flow__step-note--2">
+          Step 2 of 5 — Each state is quieter than the last.
+        </p>
+        <p class="note-flow__step-note note-flow__step-note--3">
+          Step 3 of 5 — Each state is quieter than the last.
+        </p>
+        <p class="note-flow__step-note note-flow__step-note--4">
+          Step 4 of 5 — Each state is quieter than the last.
+        </p>
+        <p class="note-flow__step-note note-flow__step-note--5">
+          Step 5 of 5 — The quietest screen in the product.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

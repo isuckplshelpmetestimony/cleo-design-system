@@ -1,0 +1,152 @@
+---
+import './denial-showcase.css';
+---
+
+<div class="denial-showcase">
+  <section class="denial-showcase__section" aria-labelledby="denial-states-heading">
+    <h4 id="denial-states-heading" class="denial-showcase__heading">States</h4>
+    <div class="denial-showcase__states">
+      <aside class="cleo-denial cleo-denial--clean" role="status">
+        <p class="cleo-denial__label">Denial risk</p>
+        <p class="cleo-denial__text">
+          No flags detected. This note reads clean for typical payer review.
+        </p>
+      </aside>
+      <aside class="cleo-denial cleo-denial--flag" role="status">
+        <p class="cleo-denial__label">Review suggested</p>
+        <p class="cleo-denial__text">
+          This phrasing may signal maintenance care to insurers. Suggested revision below.
+        </p>
+      </aside>
+      <aside class="cleo-denial cleo-denial--blocked" role="status">
+        <p class="cleo-denial__label">Cannot submit</p>
+        <p class="cleo-denial__text">
+          Required elements are missing before this note can be signed and submitted.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="denial-showcase__section" aria-labelledby="denial-preview-heading">
+    <h4 id="denial-preview-heading" class="denial-showcase__heading">Preview</h4>
+    <div class="denial-showcase__picker">
+      <input
+        type="radio"
+        name="denial-preview"
+        id="denial-preview-clean"
+        class="denial-showcase__radio"
+        checked
+      />
+      <label for="denial-preview-clean" class="denial-showcase__tab">clean</label>
+      <input type="radio" name="denial-preview" id="denial-preview-flag" class="denial-showcase__radio" />
+      <label for="denial-preview-flag" class="denial-showcase__tab">flag</label>
+      <input
+        type="radio"
+        name="denial-preview"
+        id="denial-preview-blocked"
+        class="denial-showcase__radio"
+      />
+      <label for="denial-preview-blocked" class="denial-showcase__tab">blocked</label>
+
+      <div class="denial-showcase__stage">
+        <aside class="cleo-denial cleo-denial--clean denial-showcase__live denial-showcase__live--clean" role="status">
+          <p class="cleo-denial__label">Denial risk</p>
+          <p class="cleo-denial__text">
+            No flags detected. This note reads clean for typical payer review.
+          </p>
+        </aside>
+        <aside class="cleo-denial cleo-denial--flag denial-showcase__live denial-showcase__live--flag" role="status">
+          <p class="cleo-denial__label">Review suggested</p>
+          <p class="cleo-denial__text">
+            This phrasing may signal maintenance care to insurers. Suggested revision below.
+          </p>
+        </aside>
+        <aside
+          class="cleo-denial cleo-denial--blocked denial-showcase__live denial-showcase__live--blocked"
+          role="status"
+        >
+          <p class="cleo-denial__label">Cannot submit</p>
+          <p class="cleo-denial__text">
+            Required elements are missing before this note can be signed and submitted.
+          </p>
+        </aside>
+      </div>
+      <p class="denial-showcase__hint">300ms cross-fade between states in product — no flash, same position.</p>
+    </div>
+  </section>
+
+  <section class="denial-showcase__section" aria-labelledby="denial-context-heading">
+    <h4 id="denial-context-heading" class="denial-showcase__heading">In note review</h4>
+    <div class="denial-showcase__note-context">
+      <div class="denial-showcase__note-header">
+        <h4>Maria Chen</h4>
+        <p>Initial evaluation · May 16, 2026</p>
+      </div>
+      <aside class="cleo-denial cleo-denial--flag" role="status">
+        <p class="cleo-denial__label">Review suggested</p>
+        <p class="cleo-denial__text">
+          This phrasing may signal maintenance care to insurers. Suggested revision below.
+        </p>
+      </aside>
+      <p class="denial-showcase__revision">
+        Consider: progressive strengthening for functional deficit rather than maintenance-only language.
+      </p>
+      <p class="denial-showcase__note-body">
+        Patient presents with left shoulder pain, 6 weeks duration. ROM limited in abduction. Plan:
+        progressive strengthening, manual therapy 2x/week.
+      </p>
+      <div class="denial-showcase__note-actions">
+        <button type="button" class="cleo-btn cleo-btn--ghost">Edit section</button>
+        <button type="button" class="cleo-btn cleo-btn--primary">Sign note</button>
+      </div>
+    </div>
+    <p class="denial-showcase__caption">Guardian sits with the note — not a full-width alarm banner.</p>
+  </section>
+
+  <section class="denial-showcase__section" aria-labelledby="denial-chip-heading">
+    <h4 id="denial-chip-heading" class="denial-showcase__heading">Chip vs guardian panel</h4>
+    <div class="denial-showcase__compare-row">
+      <div class="denial-showcase__compare-item">
+        <span class="cleo-status cleo-status--warning">Review suggested</span>
+        <p class="denial-showcase__compare-label">Compact pill — lists and card footers</p>
+      </div>
+      <div class="denial-showcase__compare-item">
+        <aside class="cleo-denial cleo-denial--flag" role="status">
+          <p class="cleo-denial__label">Review suggested</p>
+          <p class="cleo-denial__text">
+            This phrasing may signal maintenance care to insurers. Suggested revision below.
+          </p>
+        </aside>
+        <p class="denial-showcase__compare-label">Expanded panel — in-note context with full explanation</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="denial-showcase__section" aria-labelledby="denial-dodont-heading">
+    <h4 id="denial-dodont-heading" class="denial-showcase__heading">Do / Don't</h4>
+    <div class="denial-showcase__dodont">
+      <div class="denial-showcase__dodont-col denial-showcase__dodont-col--do">
+        <span class="denial-showcase__dodont-badge denial-showcase__dodont-badge--do">Do</span>
+        <aside class="cleo-denial cleo-denial--flag" role="status">
+          <p class="cleo-denial__label">Review suggested</p>
+          <p class="cleo-denial__text">
+            This phrasing may signal maintenance care to insurers. Suggested revision below.
+          </p>
+        </aside>
+        <p class="denial-showcase__dodont-note">
+          Soft tint, amber border, plain English. Amber = let's look at this together.
+        </p>
+      </div>
+      <div class="denial-showcase__dodont-col denial-showcase__dodont-col--dont">
+        <span class="denial-showcase__dodont-badge denial-showcase__dodont-badge--dont">Don't</span>
+        <div class="denial-showcase__alarm" role="presentation">
+          ⚠ Warning! Denial risk detected!
+          <p>Your note may be REJECTED. Fix immediately!!!</p>
+        </div>
+        <p class="denial-showcase__dodont-note">
+          Bright red, exclamation icons, alarm language — triggers fight-or-flight (Frame 2).
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

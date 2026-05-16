@@ -1,0 +1,65 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro';
+import ProseSection from '../components/docs/ProseSection.astro';
+---
+
+<DocsLayout title="Voice & tone" description="Cleo brand voice and copy principles">
+  <div class="prose">
+    <h1>Voice and tone</h1>
+    <p class="page-lead">
+      A senior clinician colleague. Warm but never casual. Expert but never cold. Acknowledge
+      difficulty before offering solution.
+    </p>
+  </div>
+
+  <div class="voice-columns wide-band">
+    <section>
+      <h2>Words we use</h2>
+      <ul>
+        <li>Specific numbers</li>
+        <li>Plain declarative sentences</li>
+        <li>"you," "your notes," "your patients"</li>
+        <li>"home on time," "done," "clean," "clear"</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Words we never use</h2>
+      <ul>
+        <li>supercharge, revolutionize, game-changer</li>
+        <li>seamless, AI-powered, all-in-one</li>
+        <li>streamline, empower, unlock, cutting-edge</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="prose">
+    <ProseSection title="Before and after">
+      <table class="token-table">
+        <thead>
+          <tr><th>Before</th><th>After</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supercharge your practice with AI-powered documentation</td>
+            <td>Notes done in under five minutes.</td>
+          </tr>
+          <tr>
+            <td>Seamless billing integration</td>
+            <td>Your claims go out clean. Denials go down.</td>
+          </tr>
+          <tr>
+            <td>Empower your team</td>
+            <td>Your therapists leave on time.</td>
+          </tr>
+        </tbody>
+      </table>
+    </ProseSection>
+
+    <ProseSection title="Emotional register">
+      <p>
+        Write as if speaking to a colleague after a hard clinic day. Name the reality first. Offer
+        the path second. Never hype. Never condescend.
+      </p>
+    </ProseSection>
+  </div>
+</DocsLayout>

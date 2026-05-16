@@ -1,0 +1,56 @@
+---
+interface Props {
+  beat: string;
+  moment: string;
+  monologue: string;
+  frameNumber: number;
+}
+
+const { beat, moment, monologue, frameNumber } = Astro.props;
+---
+
+<article class="storyboard-panel" id={`frame-${frameNumber}`}>
+  <div class="panel-art">
+    <slot />
+  </div>
+  <span class="beat label-caps">Frame {frameNumber} — {beat}</span>
+  <p class="moment">{moment}</p>
+  <blockquote class="monologue">"{monologue}"</blockquote>
+</article>
+
+<style>
+  .storyboard-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .panel-art {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-midnight);
+  }
+
+  .panel-art :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .moment {
+    font-size: 0.9375rem;
+    color: var(--color-midnight);
+    margin: 0;
+  }
+
+  .monologue {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-slate);
+    border: none;
+    padding: 0;
+  }
+</style>

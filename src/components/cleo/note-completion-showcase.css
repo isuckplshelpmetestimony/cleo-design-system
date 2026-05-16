@@ -1,0 +1,168 @@
+.note-completion-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  max-width: 560px;
+}
+
+.note-completion-showcase__section {
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-hairline);
+}
+
+.note-completion-showcase__section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.note-completion-showcase__heading {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+  margin: 0 0 var(--space-4);
+}
+
+.note-completion-showcase__caption {
+  font-size: 0.8125rem;
+  color: var(--color-steel);
+  margin: var(--space-4) 0 0;
+  line-height: var(--leading-body);
+}
+
+/* Interactive flow — radio-driven tabs */
+.note-flow-showcase .note-flow__radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.note-flow-showcase .note-flow__tab {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.note-flow-showcase #note-step-recording:checked ~ .note-flow__tabs label[for='note-step-recording'],
+.note-flow-showcase #note-step-transcribing:checked ~ .note-flow__tabs label[for='note-step-transcribing'],
+.note-flow-showcase #note-step-review:checked ~ .note-flow__tabs label[for='note-step-review'],
+.note-flow-showcase #note-step-sign:checked ~ .note-flow__tabs label[for='note-step-sign'],
+.note-flow-showcase #note-step-complete:checked ~ .note-flow__tabs label[for='note-step-complete'] {
+  color: var(--color-midnight);
+  box-shadow: inset 0 -2px 0 var(--color-amber);
+}
+
+.note-flow-showcase .note-flow__panel {
+  display: none;
+  width: 100%;
+}
+
+.note-flow-showcase #note-step-recording:checked ~ .note-flow__stage .note-flow__panel--recording,
+.note-flow-showcase #note-step-transcribing:checked ~ .note-flow__stage .note-flow__panel--transcribing,
+.note-flow-showcase #note-step-review:checked ~ .note-flow__stage .note-flow__panel--review,
+.note-flow-showcase #note-step-sign:checked ~ .note-flow__stage .note-flow__panel--sign,
+.note-flow-showcase #note-step-complete:checked ~ .note-flow__stage .note-flow__panel--complete {
+  display: block;
+}
+
+.note-flow-showcase .note-flow__step-note {
+  display: none;
+}
+
+.note-flow-showcase #note-step-recording:checked ~ .note-flow__footnotes .note-flow__step-note--1,
+.note-flow-showcase #note-step-transcribing:checked ~ .note-flow__footnotes .note-flow__step-note--2,
+.note-flow-showcase #note-step-review:checked ~ .note-flow__footnotes .note-flow__step-note--3,
+.note-flow-showcase #note-step-sign:checked ~ .note-flow__footnotes .note-flow__step-note--4,
+.note-flow-showcase #note-step-complete:checked ~ .note-flow__footnotes .note-flow__step-note--5 {
+  display: block;
+}
+
+.note-flow-showcase .note-flow__review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* Arc overview — all five at once */
+.note-flow-arc {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+}
+
+@media (max-width: 720px) {
+  .note-flow-arc {
+    grid-template-columns: 1fr;
+  }
+}
+
+.note-flow-arc__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-fog);
+  border-radius: var(--radius-sm);
+  border: var(--border-hairline);
+  min-height: 100px;
+}
+
+.note-flow-arc__label {
+  font-size: 0.625rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+  margin: 0;
+}
+
+.note-flow-arc__mini {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  color: var(--color-midnight);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.note-flow-arc__mini--complete {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.note-flow-arc__mini-wave {
+  width: 100%;
+  max-width: 64px;
+  height: 24px;
+}
+
+.note-flow-arc__mini-progress {
+  width: 80%;
+  height: 2px;
+  background: var(--color-surface-sidebar);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.note-flow-arc__mini-progress span {
+  display: block;
+  width: 62%;
+  height: 100%;
+  background: var(--color-slate);
+}
+
+.note-flow-arc__check {
+  width: 14px;
+  height: 14px;
+}

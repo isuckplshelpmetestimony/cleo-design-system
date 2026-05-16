@@ -1,0 +1,224 @@
+---
+import './spacing-showcase.css';
+---
+
+<div class="spacing-showcase">
+  <section class="spacing-showcase__block" aria-labelledby="spacing-a-heading">
+    <p class="spacing-showcase__label">A</p>
+    <h3 id="spacing-a-heading" class="spacing-showcase__title">Documentation layout</h3>
+    <div class="spacing-layout-mini">
+      <div class="spacing-layout-mini__sidebar" aria-hidden="true">
+        <p class="spacing-layout-mini__sidebar-brand">Cleo</p>
+        <div class="spacing-layout-mini__nav-line"></div>
+        <div class="spacing-layout-mini__nav-line"></div>
+        <div class="spacing-layout-mini__nav-line spacing-layout-mini__nav-line--active"></div>
+        <div class="spacing-layout-mini__nav-line"></div>
+      </div>
+      <div class="spacing-layout-mini__main">
+        <h4 class="spacing-layout-mini__h1">Spacing and grid</h4>
+        <p class="spacing-layout-mini__lead">
+          Generous vertical rhythm so nothing feels compressed.
+        </p>
+        <table class="spacing-layout-mini__table">
+          <thead>
+            <tr><th>Token</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>--space-2</code></td><td>8px</td></tr>
+            <tr><td><code>--space-4</code></td><td>16px</td></tr>
+            <tr><td><code>--space-6</code></td><td>24px</td></tr>
+            <tr><td><code>--space-8</code></td><td>32px</td></tr>
+            <tr><td><code>--space-section</code></td><td>80px</td></tr>
+          </tbody>
+        </table>
+        <p class="spacing-layout-mini__lead" style="margin:0;font-size:0.4375rem">Layout rules…</p>
+        <div class="spacing-layout-mini__annotations">
+          <span class="spacing-measure spacing-measure--accent spacing-layout-mini__anno-prose"
+            >680px prose max</span
+          >
+          <span class="spacing-measure spacing-measure--accent spacing-layout-mini__anno-section"
+            >80px section gap</span
+          >
+        </div>
+      </div>
+    </div>
+    <p class="spacing-showcase__note">
+      Sidebar <strong>260px</strong> · prose <strong>680px</strong> · content padding
+      <strong>48–64px</strong> · left-aligned, not centered card stacks.
+    </p>
+  </section>
+
+  <section class="spacing-showcase__block" aria-labelledby="spacing-b-heading">
+    <p class="spacing-showcase__label">B</p>
+    <h3 id="spacing-b-heading" class="spacing-showcase__title">Spacing ladder</h3>
+    <p class="spacing-showcase__note" style="margin-top:0;margin-bottom:var(--space-4)">
+      4px base unit — always use tokens, never arbitrary values.
+    </p>
+    <div class="spacing-ladder">
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token"><code>--space-2</code></span>
+        <span class="spacing-ladder__px">8px</span>
+        <div class="spacing-ladder__bar" style="width: 8px"></div>
+        <p class="spacing-ladder__hint">Thin gap between icon + label</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token">—</span>
+        <span class="spacing-ladder__px">12px</span>
+        <div class="spacing-ladder__bar" style="width: 12px"></div>
+        <p class="spacing-ladder__hint">Small label-to-field gap</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token"><code>--space-4</code></span>
+        <span class="spacing-ladder__px">16px</span>
+        <div class="spacing-ladder__bar" style="width: 16px"></div>
+        <p class="spacing-ladder__hint">Input internal padding</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token"><code>--space-6</code></span>
+        <span class="spacing-ladder__px">24px</span>
+        <div class="spacing-ladder__bar" style="width: 24px"></div>
+        <p class="spacing-ladder__hint">Button left/right padding</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token"><code>--space-8</code></span>
+        <span class="spacing-ladder__px">32px</span>
+        <div class="spacing-ladder__bar" style="width: 32px"></div>
+        <p class="spacing-ladder__hint">Card padding all sides</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token">—</span>
+        <span class="spacing-ladder__px">40px</span>
+        <div class="spacing-ladder__bar" style="width: 40px"></div>
+        <p class="spacing-ladder__hint">Between card header and body</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token">—</span>
+        <span class="spacing-ladder__px">48px</span>
+        <div class="spacing-ladder__bar" style="width: 48px"></div>
+        <p class="spacing-ladder__hint">Section intro margin</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token">—</span>
+        <span class="spacing-ladder__px">64px</span>
+        <div class="spacing-ladder__bar" style="width: 64px"></div>
+        <p class="spacing-ladder__hint">Large block separation</p>
+      </div>
+      <div class="spacing-ladder__row">
+        <span class="spacing-ladder__token"><code>--space-section</code></span>
+        <span class="spacing-ladder__px">80px</span>
+        <div class="spacing-ladder__bar" style="width: 80px"></div>
+        <p class="spacing-ladder__hint">Between major doc sections</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spacing-showcase__block" aria-labelledby="spacing-c-heading">
+    <p class="spacing-showcase__label">C</p>
+    <h3 id="spacing-c-heading" class="spacing-showcase__title">Grid anatomy</h3>
+    <div class="spacing-grid-diagram">
+      <div class="spacing-grid-diagram__frame">
+        <div class="spacing-grid-diagram__sidebar">
+          <span>Sidebar<br /><strong>260px</strong></span>
+        </div>
+        <div class="spacing-grid-diagram__content">
+          <div class="spacing-grid-diagram__prose">Prose column · max 680px</div>
+          <div class="spacing-grid-diagram__wide">.wide-band showcase · up to ~1100px</div>
+        </div>
+      </div>
+      <div class="spacing-grid-diagram__callouts">
+        <span class="spacing-measure spacing-measure--accent">48–64px content padding</span>
+        <span class="spacing-measure spacing-measure--accent">80px between H2 sections</span>
+        <span class="spacing-measure spacing-measure--accent">Wide-band extends past prose</span>
+      </div>
+    </div>
+    <p class="spacing-showcase__note">Desktop ~1200px — prose stays narrow; showcases break out wider, same left edge.</p>
+  </section>
+
+  <section class="spacing-showcase__block" aria-labelledby="spacing-d-heading">
+    <p class="spacing-showcase__label">D</p>
+    <h3 id="spacing-d-heading" class="spacing-showcase__title">Spacing in components</h3>
+    <div class="spacing-components">
+      <div class="spacing-components__item">
+        <p class="spacing-components__heading">Button</p>
+        <div class="spacing-components__demo">
+          <div class="spacing-pad-demo">
+            <span class="spacing-pad-demo__tag spacing-pad-demo__tag--top">24px</span>
+            <span class="spacing-pad-demo__tag spacing-pad-demo__tag--left">24px</span>
+            <div class="spacing-pad-demo__outline">
+              <button type="button" class="cleo-btn cleo-btn--primary">Sign note</button>
+            </div>
+          </div>
+        </div>
+        <p class="spacing-showcase__note" style="margin-top:var(--space-2)">
+          <code>--space-6</code> horizontal padding inside primary button.
+        </p>
+      </div>
+
+      <div class="spacing-components__item">
+        <p class="spacing-components__heading">Card</p>
+        <div class="spacing-components__demo">
+          <div class="cleo-note-card cleo-note-card--draft" style="max-width:100%">
+            <h4 class="cleo-note-card__name">Maria Chen</h4>
+            <p class="cleo-note-card__type">Initial evaluation</p>
+            <p class="cleo-note-card__meta">Last edited · 10:42 PM</p>
+          </div>
+        </div>
+        <p class="spacing-showcase__note" style="margin-top:var(--space-2)">
+          <code>--space-8</code> (32px) padding · <code>--space-4</code> (16px) between title and meta.
+        </p>
+      </div>
+
+      <div class="spacing-components__item">
+        <p class="spacing-components__heading">Form fields</p>
+        <div class="spacing-components__demo spacing-form-demo">
+          <label>
+            Patient name
+            <span class="spacing-measure spacing-measure--accent">24px label → field</span>
+          </label>
+          <input
+            type="text"
+            class="spacing-form-demo__input"
+            value="Maria Chen"
+            readonly
+            aria-readonly="true"
+          />
+          <p class="spacing-measure spacing-measure--accent" style="margin:6px 0 0">16px input padding</p>
+          <div class="spacing-form-demo__gap">
+            <p class="spacing-form-demo__gap-label">32px between field groups</p>
+            <label>Visit type</label>
+            <input
+              type="text"
+              class="spacing-form-demo__input"
+              value="Initial evaluation"
+              readonly
+              aria-readonly="true"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spacing-showcase__block" aria-labelledby="spacing-e-heading">
+    <p class="spacing-showcase__label">E</p>
+    <h3 id="spacing-e-heading" class="spacing-showcase__title">Do / Don't</h3>
+    <div class="spacing-dodont">
+      <div class="spacing-dodont__col spacing-dodont__col--do">
+        <span class="spacing-dodont__badge spacing-dodont__badge--do">Do</span>
+        <div class="spacing-dodont__card spacing-dodont__card--generous">
+          <h5>Maria Chen</h5>
+          <p>Initial evaluation · generous 32px padding, readable line length, room to breathe.</p>
+        </div>
+        <p class="spacing-showcase__note">Cleo: left-aligned, <strong>680px</strong> prose, <strong>80px</strong> section gaps.</p>
+      </div>
+      <div class="spacing-dodont__col spacing-dodont__col--dont">
+        <span class="spacing-dodont__badge spacing-dodont__badge--dont">Don't</span>
+        <div class="spacing-dodont__card spacing-dodont__card--cramped">
+          <h5>Maria Chen</h5>
+          <p>Cramped 8px padding, dense tabless UI, floating centered card.</p>
+        </div>
+        <p class="spacing-showcase__note">Avoid tight padding everywhere and centered card stacks.</p>
+      </div>
+    </div>
+  </section>
+</div>

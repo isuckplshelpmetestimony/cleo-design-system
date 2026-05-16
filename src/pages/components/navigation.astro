@@ -1,0 +1,40 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import NavShowcase from '../../components/cleo/NavShowcase.astro';
+---
+
+<DocsLayout title="Navigation" description="Cleo navigation patterns">
+  <div class="prose">
+    <h1>Navigation</h1>
+    <p class="page-lead">Minimal slate links. Active state uses amber — bottom underline for top nav, left bar for sidebar. No background fills.</p>
+  </div>
+
+  <div class="wide-band">
+    <NavShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Product top nav</strong></td>
+          <td>DM Sans 15px. Default: slate text. Hover: midnight. Active: midnight + 2px amber bottom border.</td>
+        </tr>
+        <tr>
+          <td><strong>Sidebar nav</strong></td>
+          <td>Panel <code>#E2E5EA</code>. Links slate; active = midnight + 2px amber left border. Section labels 11px caps steel.</td>
+        </tr>
+        <tr>
+          <td><strong>Never</strong></td>
+          <td>Background pills on links, icons in primary nav, bold weights, bright blue underlines.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <PhilosophyCallout>
+      <p>Wayfinding should disappear into the background. The therapist's attention belongs to notes and patients — Frame 1–3 exhaustion means every chrome element is a tax.</p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

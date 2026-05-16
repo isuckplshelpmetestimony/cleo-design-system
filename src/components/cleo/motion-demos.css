@@ -1,0 +1,76 @@
+.motion-demo-block {
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-hairline);
+}
+
+.motion-demo-block h4 {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  margin: 0 0 var(--space-2);
+}
+
+.motion-demo-desc {
+  font-size: 0.875rem;
+  color: var(--color-steel);
+  margin: 0 0 var(--space-4);
+}
+
+.motion-fade-box {
+  margin-top: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-fog);
+  border-radius: var(--radius-sm);
+  animation: fadeIn var(--duration-base) var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.motion-settle-box {
+  margin-top: var(--space-4);
+  padding: var(--space-8);
+  background: var(--color-slate);
+  color: var(--color-cream);
+  border-radius: var(--radius-sm);
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    padding var(--duration-slow) var(--ease-out),
+    max-width var(--duration-slow) var(--ease-out);
+  max-width: 100%;
+}
+
+.motion-settle-box--settled {
+  transform: scale(0.92);
+  padding: var(--space-4) var(--space-6);
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.motion-denial-pill {
+  display: inline-block;
+  margin-top: var(--space-4);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  border: 0.5px solid transparent;
+}
+
+.motion-denial-pill--clean {
+  background: rgba(61, 107, 79, 0.12);
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+
+.motion-denial-pill--flag {
+  background: rgba(212, 132, 26, 0.12);
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+}

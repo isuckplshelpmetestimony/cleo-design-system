@@ -1,0 +1,37 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="How to use" description="How to use the Cleo design system">
+  <div class="prose">
+    <h1>How to use this design system</h1>
+
+    <h2>For designers</h2>
+    <p>
+      Start with <a href="/introduction/journey">the journey</a> and <a href="/introduction/quiet-authority">Quiet Authority</a>.
+      Use foundations for tokens before composing new screens. When exploring layouts, keep prose
+      width near 680px and let component showcases breathe in wide bands.
+    </p>
+
+    <h2>For engineers</h2>
+    <p>
+      CSS custom properties in <code>tokens.css</code> are the source of truth. React components
+      in <code>src/components/cleo/</code> are reference implementations — copy patterns, do not
+      fork colors. Amber accent: once per page maximum on the single most important action.
+    </p>
+
+    <h2>For writers</h2>
+    <p>
+      Read <a href="/voice">voice and tone</a> before any user-facing copy. Lead with specificity
+      and plain declarative sentences. Acknowledge difficulty before offering solution.
+    </p>
+
+    <h2>Conventions</h2>
+    <ul>
+      <li>Never pure white or pure black</li>
+      <li>Only font weights 400 and 500</li>
+      <li>No bounce, spring, or celebration motion</li>
+      <li>Denial UI is a guardian, not an error state</li>
+    </ul>
+  </div>
+</DocsLayout>

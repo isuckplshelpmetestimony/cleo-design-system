@@ -1,0 +1,59 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import InputShowcase from '../../components/cleo/InputShowcase.astro';
+---
+
+<DocsLayout title="Form inputs" description="Cleo form input components">
+  <div class="prose">
+    <h1>Form inputs</h1>
+    <p class="page-lead">Focused inputs feel calm, not urgent. No glow — glow reads as alert to an already vigilant user.</p>
+  </div>
+
+  <div class="wide-band">
+    <InputShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Default</strong></td>
+          <td>Fog background (<code>#F4F5F7</code>), 0.5px slate border, slate placeholder.</td>
+        </tr>
+        <tr>
+          <td><strong>Filled</strong></td>
+          <td>Midnight text (<code>#0F1F30</code>), same box styling — no success green.</td>
+        </tr>
+        <tr>
+          <td><strong>Focused</strong></td>
+          <td>Border → midnight only. No blue glow, no box shadow.</td>
+        </tr>
+        <tr>
+          <td><strong>Error</strong></td>
+          <td>Amber border (<code>#D4841A</code>), plain-English message below — guardian tone, not alarm red.</td>
+        </tr>
+        <tr>
+          <td><strong>Signed</strong></td>
+          <td>Read-only signature panel — stroke mark, printed credentials, amber check + timestamp. Not a text input.</td>
+        </tr>
+        <tr>
+          <td><strong>Disabled</strong></td>
+          <td>For fields not yet filled: 45% opacity on a standard <code>cleo-input</code>, not used after signing.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Shared specs</h2>
+    <ul>
+      <li>Label: 11px caps, steel, DM Sans medium</li>
+      <li>Input: 17px DM Sans regular, padding 12×16px, 8px radius</li>
+      <li>Max width: 400px</li>
+    </ul>
+
+    <PhilosophyCallout>
+      <p>A focused field should feel like a clean piece of paper ready for clinical thought — not a system demanding immediate action.</p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

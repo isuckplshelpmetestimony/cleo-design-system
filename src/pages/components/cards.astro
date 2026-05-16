@@ -1,0 +1,52 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import CardShowcase from '../../components/cleo/CardShowcase.astro';
+---
+
+<DocsLayout title="Cards" description="Cleo note card component">
+  <div class="prose">
+    <h1>Note card</h1>
+    <p class="page-lead">The therapist's primary work object. A clean piece of paper, not a dashboard widget.</p>
+  </div>
+
+  <div class="wide-band">
+    <CardShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Surface</strong></td>
+          <td>Page paper (<code>#F5F3F0</code>), 0.5px slate border, 12px radius, 24px padding.</td>
+        </tr>
+        <tr>
+          <td><strong>Left accent</strong></td>
+          <td>3px bar — amber (draft), steel (in progress), green (complete).</td>
+        </tr>
+        <tr>
+          <td><strong>Patient name</strong></td>
+          <td>Lora serif, medium, midnight.</td>
+        </tr>
+        <tr>
+          <td><strong>Note type</strong></td>
+          <td>11px caps, steel.</td>
+        </tr>
+        <tr>
+          <td><strong>Metadata</strong></td>
+          <td>14px steel — state-specific line (last edited, transcribing, signed).</td>
+        </tr>
+        <tr>
+          <td><strong>Status</strong></td>
+          <td>Pill bottom-right with icon — draft (amber), in progress (neutral), complete (green + amber check).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <PhilosophyCallout>
+      <p>Cards hold clinical work — they should feel trustworthy and uncluttered, matching the quiet conviction of Frame 7 as notes finish early. Complete cards are the visually quietest.</p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

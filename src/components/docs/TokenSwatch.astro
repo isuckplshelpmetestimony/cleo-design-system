@@ -1,0 +1,69 @@
+---
+interface Props {
+  name: string;
+  hex: string;
+  role: string;
+  usage: string;
+  color: string;
+}
+
+const { name, hex, role, usage, color } = Astro.props;
+---
+
+<div class="token-swatch">
+  <div class="swatch" style={`background: ${color}`}></div>
+  <div class="meta">
+    <code class="token-name">{name}</code>
+    <span class="hex">{hex}</span>
+    <p class="role"><strong>Role:</strong> {role}</p>
+    <p class="usage">{usage}</p>
+    <div class="do-dont-slot">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .token-swatch {
+    border: var(--border-hairline);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-surface-elevated);
+  }
+
+  .swatch {
+    height: 88px;
+    width: 100%;
+  }
+
+  .meta {
+    padding: var(--space-4);
+  }
+
+  .token-name {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-1);
+  }
+
+  .hex {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-steel);
+  }
+
+  .role,
+  .usage {
+    font-size: 0.875rem;
+    margin: var(--space-3) 0 0;
+    color: var(--color-midnight);
+  }
+
+  .usage {
+    color: var(--color-steel);
+  }
+
+  .do-dont-slot {
+    margin-top: var(--space-4);
+  }
+</style>

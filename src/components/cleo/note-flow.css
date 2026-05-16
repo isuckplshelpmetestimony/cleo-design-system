@@ -1,0 +1,114 @@
+.note-flow {
+  max-width: 520px;
+  background: var(--color-page);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.note-flow__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: var(--border-hairline);
+  background: var(--color-fog);
+}
+
+.note-flow__tab {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  color: var(--color-steel);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.note-flow__tab--active {
+  color: var(--color-midnight);
+  box-shadow: inset 0 -2px 0 var(--color-amber);
+}
+
+.note-flow__stage {
+  min-height: 200px;
+  padding: var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-flow__hint {
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+  margin: 0 0 var(--space-4);
+}
+
+.note-flow__wave {
+  width: 100%;
+  max-width: 280px;
+}
+
+.note-flow__progress {
+  width: 100%;
+  height: 3px;
+  background: var(--color-surface-sidebar);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.note-flow__progress-fill {
+  height: 100%;
+  background: var(--color-slate);
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.note-flow__note-text {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: var(--leading-body);
+  color: var(--color-midnight);
+  margin: 0;
+}
+
+.note-flow__complete {
+  text-align: center;
+  width: 100%;
+}
+
+.note-flow__complete-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  margin: 0 0 var(--space-2);
+  color: var(--color-midnight);
+}
+
+.note-flow__timestamp {
+  font-size: 0.875rem;
+  color: var(--color-steel);
+  margin: 0;
+}
+
+.note-flow__step-note {
+  font-size: 0.8125rem;
+  color: var(--color-steel);
+  padding: var(--space-3) var(--space-6);
+  margin: 0;
+  border-top: var(--border-hairline);
+  font-style: italic;
+}
+
+.note-flow__recording,
+.note-flow__transcribing,
+.note-flow__review,
+.note-flow__sign {
+  width: 100%;
+}

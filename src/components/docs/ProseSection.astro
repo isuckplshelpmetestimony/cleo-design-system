@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  accent?: boolean;
+  id?: string;
+}
+
+const { title, accent = false, id } = Astro.props;
+---
+
+<section class="prose-section" id={id}>
+  <h2>{title}</h2>
+  {accent && <hr class="section-accent-rule" />}
+  <slot />
+</section>
+
+<style>
+  .prose-section {
+    margin-bottom: var(--space-section);
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import TokenSwatch from '../../components/docs/TokenSwatch.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import ProseSection from '../../components/docs/ProseSection.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+
+const tokens = [
+  { name: 'color.page', hex: '#F5F3F0', color: '#F5F3F0', role: 'Page background', usage: 'Default canvas for all product and documentation surfaces. Never pure white.' },
+  { name: 'color.surface.sidebar', hex: '#E2E5EA', color: '#E2E5EA', role: 'Secondary surface, sidebar', usage: 'Navigation and secondary panels. Separates wayfinding from content without heavy contrast.' },
+  { name: 'color.fog', hex: '#F4F5F7', color: '#F4F5F7', role: 'Light surface variant', usage: 'Input backgrounds, showcase bands, subtle elevation.' },
+  { name: 'color.midnight', hex: '#0F1F30', color: '#0F1F30', role: 'Primary text, dark hero backgrounds', usage: 'Headlines, body text, dark bands. Never pure black.' },
+  { name: 'color.slate', hex: '#2E4057', color: '#2E4057', role: 'Primary interactive', usage: 'Buttons, borders, links, waveform accents. Calm authority.' },
+  { name: 'color.steel', hex: '#8C95A6', color: '#8C95A6', role: 'Muted text, labels', usage: 'Secondary copy, placeholders, small-caps labels.' },
+  { name: 'color.cream', hex: '#F5EBD6', color: '#F5EBD6', role: 'Warm text on dark', usage: 'Button text on slate, dark surface copy. Warmth without saturation.' },
+];
+---
+
+<DocsLayout title="Color" description="Cleo color system and tokens">
+  <div class="prose">
+    <h1>Color system</h1>
+    <p class="page-lead">
+      A cool, restrained palette for a cognitively exhausted user. Competitors in PT software
+      overuse color — it reads as noise. Cleo's restraint is a human decision.
+    </p>
+  </div>
+
+  <div class="token-grid wide-band">
+    {
+      tokens.map((t) => (
+        <TokenSwatch name={t.name} hex={t.hex} color={t.color} role={t.role} usage={t.usage}>
+          <DoDont>
+            <p slot="do" style="margin:0;font-size:0.8125rem;color:var(--color-midnight)">Body on #F5F3F0</p>
+            <p slot="dont" style="margin:0;font-size:0.8125rem;color:#000;background:#fff;padding:4px">Pure black on white</p>
+          </DoDont>
+        </TokenSwatch>
+      ))
+    }
+  </div>
+
+  <ProseSection title="The single accent philosophy" accent>
+    <p>
+      <code>color.amber</code> — <strong>#D4841A</strong> — is the only warm accent in the system.
+      It appears once per page maximum, on the single most important element.
+    </p>
+    <p>
+      Every competitor floods interfaces with greens, blues, and oranges. To a therapist who has
+      been fighting paperwork all day, that reads as more demands on their attention. Cleo's amber
+      is the single moment of warmth in a composed cool world — mirroring Frame 8: home for dinner.
+    </p>
+    <PhilosophyCallout title="Where amber lives">
+      <p>Primary CTA on sign step. Active nav indicator. Section accent rules on key intros. Small completion checkmark. Nowhere else on the same screen.</p>
+    </PhilosophyCallout>
+  </ProseSection>
+
+  <div class="token-grid wide-band" style="grid-template-columns: 1fr;">
+    <TokenSwatch
+      name="color.amber"
+      hex="#D4841A"
+      color="#D4841A"
+      role="Single accent"
+      usage="One warm moment per surface. CTA, nav active state, completion check."
+    />
+  </div>
+
+  <ProseSection title="Dark surfaces">
+    <p>
+      <code>color.midnight</code> background with <code>color.cream</code> text for hero bands and
+      dark documentation sections. Never invert to pure white text.
+    </p>
+  </ProseSection>
+</DocsLayout>

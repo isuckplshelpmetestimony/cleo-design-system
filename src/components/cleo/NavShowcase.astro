@@ -1,0 +1,60 @@
+---
+/** Static navigation demos — product top nav + sidebar pattern */
+import './nav-showcase.css';
+---
+
+<div class="nav-showcase">
+  <section class="nav-showcase__section" aria-labelledby="nav-product-heading">
+    <h4 id="nav-product-heading" class="nav-showcase__heading">Product top navigation</h4>
+    <p class="nav-showcase__desc">Primary app chrome — Notes, Patients, Schedule.</p>
+
+    <div class="cleo-nav-bar">
+      <nav class="cleo-nav-example" aria-label="Primary">
+        <a href="#" class="cleo-nav-example__link cleo-nav-example__link--active">Notes</a>
+        <a href="#" class="cleo-nav-example__link">Patients</a>
+        <a href="#" class="cleo-nav-example__link">Schedule</a>
+      </nav>
+    </div>
+
+    <div class="nav-showcase__states">
+      <div class="nav-showcase__state">
+        <a href="#" class="cleo-nav-example__link cleo-nav-example__link--static">Patients</a>
+        <span class="nav-showcase__caption">Default</span>
+      </div>
+      <div class="nav-showcase__state">
+        <a href="#" class="cleo-nav-example__link cleo-nav-example__link--hover-demo">Patients</a>
+        <span class="nav-showcase__caption">Hover</span>
+      </div>
+      <div class="nav-showcase__state">
+        <a href="#" class="cleo-nav-example__link cleo-nav-example__link--active">Notes</a>
+        <span class="nav-showcase__caption">Active</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="nav-showcase__section" aria-labelledby="nav-sidebar-heading">
+    <h4 id="nav-sidebar-heading" class="nav-showcase__heading">Sidebar navigation</h4>
+    <p class="nav-showcase__desc">App shell and documentation — amber bar on the left when active.</p>
+
+    <aside class="nav-showcase-sidebar" aria-label="Sidebar example">
+      <div class="nav-showcase-sidebar__brand">
+        <span class="nav-showcase-sidebar__logo">Cleo</span>
+        <span class="nav-showcase-sidebar__sub">Design System</span>
+      </div>
+      <nav>
+        <p class="nav-showcase-sidebar__section-title">Introduction</p>
+        <ul class="nav-showcase-sidebar__list">
+          <li><a href="#" class="nav-showcase-sidebar__link">What is Cleo</a></li>
+          <li><a href="#" class="nav-showcase-sidebar__link">Emotional brief</a></li>
+          <li><a href="#" class="nav-showcase-sidebar__link nav-showcase-sidebar__link--active">The journey</a></li>
+          <li><a href="#" class="nav-showcase-sidebar__link">Quiet Authority</a></li>
+        </ul>
+        <p class="nav-showcase-sidebar__section-title">Foundations</p>
+        <ul class="nav-showcase-sidebar__list">
+          <li><a href="#" class="nav-showcase-sidebar__link">Color</a></li>
+          <li><a href="#" class="nav-showcase-sidebar__link">Typography</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </section>
+</div>

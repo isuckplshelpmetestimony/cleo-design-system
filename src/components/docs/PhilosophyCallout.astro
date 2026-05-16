@@ -1,0 +1,42 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Why this works' } = Astro.props;
+---
+
+<aside class="philosophy">
+  <p class="philosophy-label">{title}</p>
+  <div class="philosophy-body">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .philosophy {
+    border-left: 2px solid var(--color-amber);
+    padding: var(--space-4) var(--space-6);
+    margin: var(--space-8) 0;
+    background: rgba(212, 132, 26, 0.04);
+  }
+
+  .philosophy-label {
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-amber);
+    margin: 0 0 var(--space-3);
+  }
+
+  .philosophy-body {
+    font-size: var(--text-body);
+    color: var(--color-midnight);
+    line-height: var(--leading-body);
+  }
+
+  .philosophy-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

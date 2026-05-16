@@ -1,0 +1,46 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import ProseSection from '../../components/docs/ProseSection.astro';
+import SpacingShowcase from '../../components/cleo/SpacingShowcase.astro';
+---
+
+<DocsLayout title="Spacing & grid" description="Cleo spacing and layout grid">
+  <div class="prose">
+    <h1>Spacing and grid</h1>
+    <p class="page-lead">
+      Generous vertical rhythm so nothing feels compressed. The interface should feel like putting
+      something down, not picking something up.
+    </p>
+  </div>
+
+  <div class="wide-band">
+    <SpacingShowcase />
+  </div>
+
+  <div class="prose">
+    <ProseSection title="Base scale">
+      <p>4px base unit. Use tokens: 8, 12, 16, 24, 32, 40, 48, 64, 80px.</p>
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--space-2</code></td><td>8px</td><td>Tight inline gaps</td></tr>
+          <tr><td><code>--space-4</code></td><td>16px</td><td>Component internal padding</td></tr>
+          <tr><td><code>--space-6</code></td><td>24px</td><td>Button horizontal padding</td></tr>
+          <tr><td><code>--space-8</code></td><td>32px</td><td>Card padding</td></tr>
+          <tr><td><code>--space-section</code></td><td>80px</td><td>Between major doc sections</td></tr>
+        </tbody>
+      </table>
+    </ProseSection>
+
+    <ProseSection title="Layout">
+      <ul>
+        <li>Prose max width: <code>680px</code></li>
+        <li>Sidebar: <code>260px</code> fixed</li>
+        <li>Component showcases: full content width in <code>.wide-band</code></li>
+        <li>Documentation content: generous left margin, no centered card stacks</li>
+      </ul>
+    </ProseSection>
+  </div>
+</DocsLayout>

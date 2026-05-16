@@ -1,0 +1,130 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-text-primary);
+  background: var(--color-page);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-regular);
+  color: var(--color-midnight);
+  margin: 0 0 var(--space-4);
+}
+
+h1 {
+  font-size: var(--text-hero);
+  line-height: var(--leading-hero);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: var(--text-section);
+  line-height: var(--leading-section);
+  margin-top: var(--space-section);
+}
+
+h2:first-child {
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: var(--leading-tight);
+  margin-top: var(--space-10);
+}
+
+p {
+  margin: 0 0 var(--space-6);
+}
+
+a {
+  color: var(--color-slate);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-midnight);
+}
+
+ul, ol {
+  margin: 0 0 var(--space-6);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+code {
+  font-family: var(--font-sans);
+  font-size: 0.875em;
+  background: var(--color-fog);
+  padding: 0.125em 0.375em;
+  border-radius: 4px;
+  color: var(--color-slate);
+}
+
+.section-accent-rule {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-amber);
+  border: none;
+  margin: var(--space-4) 0 var(--space-6);
+}
+
+.label-caps {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+}
+
+.prose {
+  max-width: var(--content-max);
+}
+
+.wide-band {
+  max-width: none;
+  width: 100%;
+  margin: var(--space-10) 0;
+}
+
+.dark-band {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  padding: var(--space-12) var(--space-8);
+  border-radius: var(--radius-md);
+  margin: var(--space-10) 0;
+}
+
+.dark-band h2,
+.dark-band h3 {
+  color: var(--color-cream);
+}
+
+.page-lead {
+  font-size: 1.125rem;
+  color: var(--color-steel);
+  line-height: var(--leading-body);
+}

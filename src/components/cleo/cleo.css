@@ -1,0 +1,404 @@
+.cleo-btn {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.cleo-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.cleo-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cleo-btn--primary {
+  background: var(--color-slate);
+  color: var(--color-cream);
+}
+
+.cleo-btn--primary:hover:not(:disabled) {
+  background: var(--color-midnight);
+}
+
+.cleo-btn--amber {
+  background: var(--color-amber);
+  color: var(--color-cream);
+}
+
+.cleo-btn--amber:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.cleo-btn--ghost {
+  background: transparent;
+  color: var(--color-slate);
+  border: 0.5px solid var(--color-slate);
+}
+
+.cleo-btn--ghost:hover:not(:disabled) {
+  background: rgba(46, 64, 87, 0.06);
+}
+
+.cleo-btn:focus-visible {
+  outline: 2px solid var(--color-midnight);
+  outline-offset: 2px;
+}
+
+.cleo-btn--primary:focus-visible,
+.cleo-btn--amber:focus-visible {
+  outline-color: var(--color-cream);
+  outline-offset: 3px;
+}
+
+/* Button documentation demo */
+.button-showcase {
+  background: var(--color-fog);
+  border-radius: var(--radius-md);
+  padding: var(--space-10);
+}
+
+.button-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--space-8);
+  background: var(--color-page);
+  border-radius: var(--radius-md);
+}
+
+.button-demo__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 140px;
+}
+
+.button-demo__label {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-steel);
+  text-align: center;
+  line-height: var(--leading-tight);
+  max-width: 160px;
+}
+
+.button-demo--states {
+  margin-top: var(--space-6);
+  padding-top: var(--space-8);
+  border-top: var(--border-hairline);
+}
+
+/* Form fields */
+.cleo-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 400px;
+}
+
+.cleo-field__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+}
+
+.cleo-field__caption {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-steel);
+  margin-top: var(--space-1);
+}
+
+.cleo-field__message {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: var(--leading-body);
+  color: var(--color-midnight);
+  margin: var(--space-1) 0 0;
+}
+
+.cleo-input {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: var(--weight-regular);
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--color-fog);
+  border: 0.5px solid var(--color-slate);
+  border-radius: var(--radius-sm);
+  color: var(--color-midnight);
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.cleo-input::placeholder {
+  color: var(--color-slate);
+}
+
+.cleo-input:focus,
+.cleo-input--focused-demo {
+  border-color: var(--color-midnight);
+  box-shadow: none;
+}
+
+.cleo-input:focus-visible {
+  outline: 2px solid var(--color-midnight);
+  outline-offset: 2px;
+}
+
+.cleo-input--error,
+.cleo-field--error .cleo-input {
+  border-color: var(--color-amber);
+}
+
+.cleo-input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--color-surface-sidebar);
+  color: var(--color-steel);
+}
+
+/* Signed / read-only signature (not a text input) */
+.cleo-signed {
+  max-width: 400px;
+}
+
+.cleo-signed__panel {
+  padding: var(--space-6) var(--space-6) var(--space-4);
+  background: var(--color-page);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+}
+
+.cleo-signed__mark {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin-bottom: var(--space-2);
+}
+
+.cleo-signed__printed {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-3);
+  border-top: var(--border-hairline);
+}
+
+.cleo-signed__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-steel);
+  margin: var(--space-3) 0 0;
+}
+
+.cleo-signed__check {
+  flex-shrink: 0;
+}
+
+/* Input documentation demo — flat on page, no nested white/fog cards */
+.input-showcase {
+  background: transparent;
+  padding: 0;
+}
+
+.input-showcase__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: 0;
+  background: transparent;
+}
+
+.input-showcase .cleo-input {
+  background: var(--color-page);
+}
+
+.input-showcase .cleo-signed__panel {
+  background: var(--color-page);
+}
+
+.cleo-note-card {
+  position: relative;
+  background: var(--color-page);
+  border: var(--border-hairline);
+  border-radius: 12px;
+  padding: var(--space-6);
+  padding-bottom: var(--space-8);
+  max-width: 360px;
+  border-left-width: 3px;
+  border-left-style: solid;
+}
+
+.cleo-note-card--draft {
+  border-left-color: var(--color-amber);
+}
+
+.cleo-note-card--progress {
+  border-left-color: var(--color-steel);
+}
+
+.cleo-note-card--complete {
+  border-left-color: var(--color-green);
+}
+
+.cleo-note-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: var(--weight-medium);
+  margin: 0 0 var(--space-2);
+  color: var(--color-midnight);
+}
+
+.cleo-note-card__type {
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-steel);
+  margin: 0 0 var(--space-3);
+}
+
+.cleo-note-card__meta {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-steel);
+  margin: 0 0 var(--space-6);
+  line-height: var(--leading-body);
+}
+
+.cleo-note-card__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Card documentation demo */
+.card-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 360px;
+}
+
+.card-showcase__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card-showcase__caption {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-steel);
+  text-align: center;
+}
+
+.cleo-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--color-fog);
+  color: var(--color-slate);
+}
+
+.cleo-status--success {
+  background: rgba(61, 107, 79, 0.12);
+  color: var(--color-green);
+}
+
+.cleo-status--warning {
+  background: rgba(212, 132, 26, 0.12);
+  color: var(--color-amber);
+}
+
+.cleo-status--draft {
+  background: var(--color-amber);
+  color: var(--color-cream);
+}
+
+.cleo-status--progress {
+  background: var(--color-fog);
+  color: var(--color-slate);
+  border: var(--border-hairline);
+}
+
+.cleo-status--complete {
+  background: var(--color-green);
+  color: var(--color-cream);
+}
+
+.cleo-status__check {
+  flex-shrink: 0;
+}
+
+.cleo-status--error {
+  background: rgba(139, 58, 58, 0.12);
+  color: var(--color-red);
+}
+
+.cleo-denial {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: var(--border-hairline);
+  max-width: 480px;
+  transition:
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.cleo-denial--clean {
+  background: rgba(61, 107, 79, 0.08);
+  border-color: var(--color-green);
+}
+
+.cleo-denial--flag {
+  background: rgba(212, 132, 26, 0.08);
+  border-color: var(--color-amber);
+}
+
+.cleo-denial--blocked {
+  background: rgba(139, 58, 58, 0.08);
+  border-color: var(--color-red);
+}
+
+.cleo-denial__label {
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  font-weight: var(--weight-medium);
+  margin: 0 0 var(--space-2);
+}
+
+.cleo-denial__text {
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: var(--leading-body);
+}

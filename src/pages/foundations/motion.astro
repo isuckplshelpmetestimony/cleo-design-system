@@ -1,0 +1,55 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import ProseSection from '../../components/docs/ProseSection.astro';
+import { MotionDemos } from '../../components/cleo/MotionDemos';
+---
+
+<DocsLayout title="Motion" description="Cleo motion and interaction principles">
+  <div class="prose">
+    <h1>Motion principles</h1>
+    <p class="page-lead">
+      Motion should make the interface feel confident, not playful. The user has been fighting
+      paperwork all day — completion is relief, not delight.
+    </p>
+  </div>
+
+  <div class="wide-band">
+    <MotionDemos client:load />
+  </div>
+
+  <div class="prose">
+    <h2>Timing tokens</h2>
+    <table class="token-table">
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>duration.fast</code></td><td>150ms</td><td>Button press, micro feedback</td></tr>
+        <tr><td><code>duration.base</code></td><td>300ms</td><td>Page fade, state cross-fade</td></tr>
+        <tr><td><code>duration.slow</code></td><td>400ms</td><td>Note completion settle</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Easing</h2>
+    <ul>
+      <li><code>ease.out</code> — cubic-bezier(0, 0, 0.2, 1)</li>
+      <li><code>ease.in-out</code> — cubic-bezier(0.4, 0, 0.2, 1)</li>
+    </ul>
+
+    <ProseSection title="Prohibited">
+      <ul>
+        <li><strong>Bounce / spring</strong> — overshoot reads as playful, not authoritative</li>
+        <li><strong>Pop-in reveal</strong> — scale entrances steal attention from content</li>
+        <li><strong>Celebration on complete</strong> — confetti or explosions when a note is done</li>
+      </ul>
+    </ProseSection>
+
+    <PhilosophyCallout>
+      <p>
+        When a note is complete, the screen should empty and quiet — not celebrate. Design for
+        relief.
+      </p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

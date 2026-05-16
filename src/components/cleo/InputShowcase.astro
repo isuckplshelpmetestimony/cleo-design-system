@@ -1,0 +1,84 @@
+---
+/** Static form input demos — all states, always visible */
+---
+
+<div class="input-showcase">
+  <div class="input-showcase__fields">
+    <div class="cleo-field">
+      <label class="cleo-field__label" for="input-demo-default">Patient name</label>
+      <input
+        id="input-demo-default"
+        type="text"
+        class="cleo-input"
+        placeholder="Search patients…"
+        autocomplete="off"
+      />
+      <span class="cleo-field__caption">Default</span>
+    </div>
+
+    <div class="cleo-field">
+      <label class="cleo-field__label" for="input-demo-filled">Chief complaint</label>
+      <input
+        id="input-demo-filled"
+        type="text"
+        class="cleo-input"
+        value="Left shoulder pain, 6 weeks"
+        autocomplete="off"
+      />
+      <span class="cleo-field__caption">Filled</span>
+    </div>
+
+    <div class="cleo-field">
+      <label class="cleo-field__label" for="input-demo-focused">Subjective</label>
+      <input
+        id="input-demo-focused"
+        type="text"
+        class="cleo-input cleo-input--focused-demo"
+        placeholder="Describe presenting concern…"
+        autocomplete="off"
+      />
+      <span class="cleo-field__caption">Focused — tab into field to see live focus</span>
+    </div>
+
+    <div class="cleo-field cleo-field--error">
+      <label class="cleo-field__label" for="input-demo-error">Plan</label>
+      <input
+        id="input-demo-error"
+        type="text"
+        class="cleo-input cleo-input--error"
+        value="Continue maintenance program weekly"
+        aria-describedby="input-demo-error-msg"
+        autocomplete="off"
+      />
+      <p id="input-demo-error-msg" class="cleo-field__message">
+        This phrasing may signal maintenance care to insurers. Suggested revision below.
+      </p>
+      <span class="cleo-field__caption">Error — guardian tone, amber border</span>
+    </div>
+
+    <div class="cleo-field">
+      <span class="cleo-field__label">Signature</span>
+      <div class="cleo-signed" role="group" aria-label="Signed by Dr. Rivera">
+        <div class="cleo-signed__panel">
+          <svg class="cleo-signed__mark" viewBox="0 0 240 64" fill="none" aria-hidden>
+            <path
+              d="M12 44 C28 12 52 52 72 28 S108 8 128 32 S168 48 196 24 S220 40 228 36"
+              stroke="#2E4057"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <p class="cleo-signed__printed">Dr. Rivera, PT, DPT</p>
+        </div>
+        <p class="cleo-signed__meta">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden class="cleo-signed__check">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="#D4841A" stroke-width="1.5"></circle>
+            <path d="M7 12l3 3 7-7" fill="none" stroke="#D4841A" stroke-width="1.5"></path>
+          </svg>
+          Signed · May 16, 2026 at 4:47 PM
+        </p>
+      </div>
+      <span class="cleo-field__caption">Signed — read-only, not an editable field</span>
+    </div>
+  </div>
+</div>

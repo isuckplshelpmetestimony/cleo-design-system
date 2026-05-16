@@ -1,0 +1,25 @@
+.cleo-nav-example {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.cleo-nav-example__link {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-slate);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.cleo-nav-example__link:hover {
+  color: var(--color-midnight);
+}
+
+.cleo-nav-example__link--active {
+  color: var(--color-midnight);
+  border-bottom-color: var(--color-amber);
+}

@@ -1,0 +1,61 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import NoteCompletionShowcase from '../../components/cleo/NoteCompletionShowcase.astro';
+---
+
+<DocsLayout title="Note completion flow" description="Cleo note completion five states">
+  <div class="prose">
+    <h1>Note completion flow</h1>
+    <p class="page-lead">
+      The core product moment — five screens, each quieter than the last. From recording to a
+      near-empty complete state.
+    </p>
+    <ol>
+      <li><strong>Recording</strong> — ambient, minimal UI, slate waveform</li>
+      <li><strong>Transcribing</strong> — soft progress, no spinning loaders</li>
+      <li><strong>Review</strong> — full note, ghost edit controls</li>
+      <li><strong>Sign</strong> — single signature action, amber CTA</li>
+      <li><strong>Complete</strong> — near-empty: title, timestamp, small amber check</li>
+    </ol>
+  </div>
+
+  <div class="wide-band">
+    <NoteCompletionShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Recording</strong></td>
+          <td>Minimal UI, slate waveform bars. “Listening…” in small caps steel.</td>
+        </tr>
+        <tr>
+          <td><strong>Transcribing</strong></td>
+          <td>3px progress bar, slate fill — no spinner. 400ms ease-out width transition.</td>
+        </tr>
+        <tr>
+          <td><strong>Review</strong></td>
+          <td>Full note body, ghost buttons for edits. Interface still present but calm.</td>
+        </tr>
+        <tr>
+          <td><strong>Sign</strong></td>
+          <td>Single amber CTA — one per screen. Patient line + “Ready to sign and submit.”</td>
+        </tr>
+        <tr>
+          <td><strong>Complete</strong></td>
+          <td>Near-empty: serif title, steel timestamp, small amber check. No confetti.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <PhilosophyCallout>
+      <p>
+        Frame 7–8: as work completes, the interface steps back. The complete screen is the quietest
+        in the product — relief, not celebration.
+      </p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

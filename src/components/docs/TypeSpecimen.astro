@@ -1,0 +1,88 @@
+---
+interface Props {
+  label: string;
+  sample: string;
+  size: string;
+  weight: string;
+  lineHeight: string;
+  letterSpacing?: string;
+  role: string;
+  example: string;
+  variant?: 'serif' | 'sans';
+}
+
+const {
+  label,
+  sample,
+  size,
+  weight,
+  lineHeight,
+  letterSpacing = 'normal',
+  role,
+  example,
+  variant = 'sans',
+} = Astro.props;
+---
+
+<div class="type-specimen">
+  <span class="label-caps">{label}</span>
+  <p
+    class:list={['sample', variant]}
+    style={`font-size: ${size}; font-weight: ${weight}; line-height: ${lineHeight}; letter-spacing: ${letterSpacing}`}
+  >
+    {sample}
+  </p>
+  <table class="metrics">
+    <tbody>
+      <tr><td>Size</td><td>{size}</td></tr>
+      <tr><td>Weight</td><td>{weight}</td></tr>
+      <tr><td>Line height</td><td>{lineHeight}</td></tr>
+      <tr><td>Letter spacing</td><td>{letterSpacing}</td></tr>
+      <tr><td>Role</td><td>{role}</td></tr>
+    </tbody>
+  </table>
+  <p class="example"><strong>In context:</strong> {example}</p>
+</div>
+
+<style>
+  .type-specimen {
+    padding-bottom: var(--space-8);
+    border-bottom: var(--border-hairline);
+  }
+
+  .sample {
+    margin: var(--space-4) 0 var(--space-6);
+    color: var(--color-midnight);
+  }
+
+  .sample.serif {
+    font-family: var(--font-serif);
+  }
+
+  .sample.sans {
+    font-family: var(--font-sans);
+  }
+
+  .metrics {
+    width: 100%;
+    max-width: 400px;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .metrics td {
+    padding: var(--space-1) var(--space-3) var(--space-1) 0;
+    color: var(--color-steel);
+  }
+
+  .metrics td:last-child {
+    color: var(--color-midnight);
+  }
+
+  .example {
+    font-size: 0.9375rem;
+    color: var(--color-steel);
+    font-style: italic;
+    margin: 0;
+  }
+</style>

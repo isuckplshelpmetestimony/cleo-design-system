@@ -1,0 +1,86 @@
+---
+import './status-showcase.css';
+---
+
+<div class="status-showcase">
+  <section class="status-showcase__section" aria-labelledby="status-soft-heading">
+    <h4 id="status-soft-heading" class="status-showcase__heading">Soft tint chips</h4>
+    <div class="status-showcase__chips-labeled">
+      <div class="status-showcase__chip-item">
+        <span class="cleo-status cleo-status--progress">In progress</span>
+        <span class="status-showcase__caption">Neutral</span>
+      </div>
+      <div class="status-showcase__chip-item">
+        <span class="cleo-status cleo-status--success">Claim clean</span>
+        <span class="status-showcase__caption">Success</span>
+      </div>
+      <div class="status-showcase__chip-item">
+        <span class="cleo-status cleo-status--warning">Review suggested</span>
+        <span class="status-showcase__caption">Warning</span>
+      </div>
+      <div class="status-showcase__chip-item">
+        <span class="cleo-status cleo-status--error">Cannot submit</span>
+        <span class="status-showcase__caption">Error</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="status-showcase__section" aria-labelledby="status-guardian-heading">
+    <h4 id="status-guardian-heading" class="status-showcase__heading">Guardian vs blocked</h4>
+    <div class="status-showcase__compare">
+      <div class="status-showcase__compare-item">
+        <span class="cleo-status cleo-status--warning">Review suggested</span>
+        <p class="status-showcase__copy">This phrasing may signal maintenance care to insurers.</p>
+      </div>
+      <div class="status-showcase__compare-item">
+        <span class="cleo-status cleo-status--error">Cannot submit</span>
+        <p class="status-showcase__copy">Required fields missing before sign.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="status-showcase__section" aria-labelledby="status-filled-heading">
+    <h4 id="status-filled-heading" class="status-showcase__heading">Filled pills (note list)</h4>
+    <div class="status-showcase__row">
+      <span class="cleo-status cleo-status--draft">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
+          <circle cx="7" cy="7" r="5.5" fill="none" stroke="currentColor" stroke-width="1.25"></circle>
+        </svg>
+        Draft
+      </span>
+      <span class="cleo-status cleo-status--progress">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
+          <circle cx="3" cy="7" r="1" fill="currentColor"></circle>
+          <circle cx="7" cy="7" r="1" fill="currentColor"></circle>
+          <circle cx="11" cy="7" r="1" fill="currentColor"></circle>
+        </svg>
+        In progress
+      </span>
+      <span class="cleo-status cleo-status--complete">
+        <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden class="cleo-status__check">
+          <path d="M7 12l3 3 7-7" fill="none" stroke="#D4841A" stroke-width="2"></path>
+        </svg>
+        Complete
+      </span>
+    </div>
+  </section>
+
+  <section class="status-showcase__section" aria-labelledby="status-card-heading">
+    <h4 id="status-card-heading" class="status-showcase__heading">On a note card</h4>
+    <div class="status-showcase__card-wrap">
+      <div class="cleo-note-card cleo-note-card--draft">
+        <h4 class="cleo-note-card__name">Maria Chen</h4>
+        <p class="cleo-note-card__type">Initial evaluation</p>
+        <p class="cleo-note-card__meta">Last edited · 10:42 PM</p>
+        <div class="cleo-note-card__footer">
+          <span class="cleo-status cleo-status--draft">
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
+              <circle cx="7" cy="7" r="5.5" fill="none" stroke="currentColor" stroke-width="1.25"></circle>
+            </svg>
+            Draft
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

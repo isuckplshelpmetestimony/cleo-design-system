@@ -1,0 +1,73 @@
+---
+interface Props {
+  doLabel?: string;
+  dontLabel?: string;
+}
+
+const { doLabel = 'Do', dontLabel = "Don't" } = Astro.props;
+---
+
+<div class="do-dont">
+  <div class="do-dont-col do">
+    <span class="do-dont-label do-label">{doLabel}</span>
+    <div class="preview">
+      <slot name="do" />
+    </div>
+  </div>
+  <div class="do-dont-col dont">
+    <span class="do-dont-label dont-label">{dontLabel}</span>
+    <div class="preview">
+      <slot name="dont" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .do-dont-col {
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    border: var(--border-hairline);
+  }
+
+  .do-dont-col.do {
+    background: var(--color-fog);
+  }
+
+  .do-dont-col.dont {
+    background: rgba(139, 58, 58, 0.06);
+    border-color: rgba(139, 58, 58, 0.2);
+  }
+
+  .do-dont-label {
+    display: block;
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .do-label {
+    color: var(--color-green);
+  }
+
+  .dont-label {
+    color: var(--color-red);
+  }
+
+  .preview {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 640px) {
+    .do-dont {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

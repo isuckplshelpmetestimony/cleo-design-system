@@ -1,0 +1,44 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import StatusShowcase from '../../components/cleo/StatusShowcase.astro';
+---
+
+<DocsLayout title="Status indicators" description="Cleo status components">
+  <div class="prose">
+    <h1>Status indicators</h1>
+    <p class="page-lead">Quiet chips that inform without alarming. Reserve red for true blockers only.</p>
+  </div>
+
+  <div class="wide-band">
+    <StatusShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Soft tint</strong></td>
+          <td>Neutral, success, warning, error — muted fills for claims and general UI. 14px DM Sans pill.</td>
+        </tr>
+        <tr>
+          <td><strong>Warning vs error</strong></td>
+          <td>Denial review = amber warning. Cannot submit = muted red — rare.</td>
+        </tr>
+        <tr>
+          <td><strong>Filled pills</strong></td>
+          <td>Draft (solid amber), in progress (fog), complete (green + amber check icon).</td>
+        </tr>
+        <tr>
+          <td><strong>On cards</strong></td>
+          <td>Filled pills align with note card footer — same tokens as card status row.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <PhilosophyCallout>
+      <p>Status color supports scanning, not emotion. A draft note is information; a blocked submission is the only state that warrants urgency.</p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

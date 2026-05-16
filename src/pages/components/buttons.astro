@@ -1,0 +1,53 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import ButtonShowcase from '../../components/cleo/ButtonShowcase.astro';
+---
+
+<DocsLayout title="Buttons" description="Cleo button components">
+  <div class="prose">
+    <h1>Buttons</h1>
+    <p class="page-lead">Slate reads as calm authority. Cream reads as warmth. Together: I know what I'm doing and I care about you.</p>
+  </div>
+
+  <div class="wide-band">
+    <ButtonShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Primary</strong></td>
+          <td>Slate background (<code>#2E4057</code>), cream text (<code>#F5EBD6</code>). Default important action — e.g. “Sign note”.</td>
+        </tr>
+        <tr>
+          <td><strong>Amber CTA</strong></td>
+          <td>Amber background (<code>#D4841A</code>), cream text. The single most important action on the page — e.g. “Sign and submit”. Use once per screen.</td>
+        </tr>
+        <tr>
+          <td><strong>Ghost</strong></td>
+          <td>Transparent fill, 0.5px slate border, slate text. Secondary actions that step back — e.g. “Edit draft”.</td>
+        </tr>
+        <tr>
+          <td><strong>Disabled</strong></td>
+          <td>45% opacity. Same dimensions as primary. No hover or press feedback.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Shared specs</h2>
+    <ul>
+      <li>Font: DM Sans, medium (500), 17px</li>
+      <li>Padding: 10px × 24px</li>
+      <li>Border radius: 8px</li>
+      <li>Press: scale(0.98), 150ms ease-out</li>
+      <li>Hover: primary → midnight; ghost → light slate tint; amber → slight brighten</li>
+    </ul>
+
+    <PhilosophyCallout>
+      <p>Secondary actions step back so the interface never competes with the therapist's attention — Frame 3 skepticism requires the UI to prove restraint before asking for trust.</p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>

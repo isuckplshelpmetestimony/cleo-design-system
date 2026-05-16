@@ -1,0 +1,55 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import DenialIndicatorShowcase from '../../components/cleo/DenialIndicatorShowcase.astro';
+---
+
+<DocsLayout title="Denial prevention" description="Cleo denial risk indicator">
+  <div class="prose">
+    <h1>Denial prevention indicator</h1>
+    <p class="page-lead">
+      Not a warning — a guardian. Green when clean, amber when flagged, red only when the note
+      cannot be submitted.
+    </p>
+  </div>
+
+  <div class="wide-band">
+    <DenialIndicatorShowcase />
+  </div>
+
+  <div class="prose">
+    <h2>Specifications</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Clean</strong></td>
+          <td>Green tint 8%, green border. Label: Denial risk. Reassurance — note reads clean.</td>
+        </tr>
+        <tr>
+          <td><strong>Flag</strong></td>
+          <td>Amber tint 8%, amber border. Label: Review suggested. Colleague tone, suggested fix inline.</td>
+        </tr>
+        <tr>
+          <td><strong>Blocked</strong></td>
+          <td>Muted red tint 8%, red border. Label: Cannot submit. Rare — only when sign is impossible.</td>
+        </tr>
+        <tr>
+          <td><strong>Shared specs</strong></td>
+          <td>Max width 480px · 8px radius · 0.5px border · 16–20px padding · 300ms color cross-fade</td>
+        </tr>
+        <tr>
+          <td><strong>vs status chip</strong></td>
+          <td>Chip for scanning in lists; guardian panel for in-note explanation. Same amber, different scale.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <PhilosophyCallout>
+      <p>
+        Frame 2 and Frame 6: the user is already anxious about denials. Copy reads like a careful
+        colleague: "This phrasing may signal maintenance care to insurers. Suggested revision
+        below." Never alarm unless submission is blocked.
+      </p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>
