@@ -54,6 +54,10 @@ export const navSections: NavSection[] = [
     title: 'Voice & tone',
     items: [{ label: 'Brand voice', href: '/voice' }],
   },
+  {
+    title: 'Art',
+    items: [{ label: 'Logo & brand art', href: '/art' }],
+  },
 ];
 
 export function isActive(href: string, currentPath: string): boolean {

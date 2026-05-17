@@ -1,0 +1,91 @@
+---
+interface Props {
+  title: string;
+  src: string;
+  alt: string;
+  filename: string;
+  caption?: string;
+  variant?: 'logo' | 'square';
+}
+
+const { title, src, alt, filename, caption, variant = 'square' } = Astro.props;
+---
+
+<figure class:list={['art-asset', `art-asset--${variant}`]}>
+  <div class="art-asset__frame">
+    <img src={src} alt={alt} width={variant === 'logo' ? 640 : 480} height={variant === 'logo' ? undefined : 480} loading="lazy" decoding="async" />
+  </div>
+  <figcaption class="art-asset__caption">
+    <h3 class="art-asset__title">{title}</h3>
+    {caption && <p class="art-asset__text">{caption}</p>}
+    <a class="art-asset__download" href={src} download={filename}>
+      Download {filename}
+    </a>
+  </figcaption>
+</figure>
+
+<style>
+  .art-asset {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .art-asset__frame {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-fog);
+    border: var(--border-hairline);
+  }
+
+  .art-asset--logo .art-asset__frame {
+    background: var(--color-page);
+    padding: var(--space-10) var(--space-8);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .art-asset--logo img {
+    max-width: min(100%, 420px);
+    height: auto;
+    display: block;
+  }
+
+  .art-asset--square .art-asset__frame {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .art-asset--square img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .art-asset__caption {
+    margin: 0;
+  }
+
+  .art-asset__title {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    margin: 0 0 var(--space-2);
+  }
+
+  .art-asset__text {
+    margin: 0 0 var(--space-3);
+    font-size: 0.9375rem;
+    color: var(--color-slate);
+    line-height: var(--leading-body);
+  }
+
+  .art-asset__download {
+    font-size: 0.875rem;
+    font-weight: var(--weight-medium);
+  }
+</style>

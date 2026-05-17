@@ -1,0 +1,126 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import ProseSection from '../../components/docs/ProseSection.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import ArtAsset from '../../components/docs/ArtAsset.astro';
+---
+
+<DocsLayout title="Art" description="Cleo logo and brand art assets">
+  <div class="prose">
+    <h1>Art</h1>
+    <hr class="section-accent-rule" />
+    <p class="page-lead">
+      Logo and companion brand visuals. Flat planes, cool restraint, one amber accent — the same
+      language as <a href="/foundations/illustration">illustration</a>, applied to identity.
+    </p>
+    <p>
+      Use these assets on marketing surfaces, social, and documentation. Product UI continues to use
+      the wordmark in Lora until vector lockups are finalized.
+    </p>
+  </div>
+
+  <section class="art-section wide-band" aria-labelledby="logo-heading">
+    <h2 id="logo-heading" class="art-section__title">Logo</h2>
+    <ArtAsset
+      title="Cleo wordmark"
+      src="/art/logo-wordmark.png"
+      alt="Cleo wordmark in midnight serif with amber dot above the letter o"
+      filename="logo-wordmark.png"
+      variant="logo"
+      caption="Primary lockup. Humanist serif, e–o ligature, single amber dot. Display on color.page (#F5F3F0) or reversed on midnight with cream type when vectorized."
+    />
+  </section>
+
+  <div class="prose">
+    <ProseSection title="Logo usage">
+      <ul>
+        <li>One amber accent in the mark — do not add secondary warm colors in the same lockup</li>
+        <li>Minimum clear space: height of the capital C on all sides</li>
+        <li>Do not stretch, outline, or place on busy photography</li>
+        <li>Favicon / app icon: simplify to C + dot; test at 32px before shipping</li>
+      </ul>
+    </ProseSection>
+  </div>
+
+  <section class="art-section wide-band" aria-labelledby="brand-art-heading">
+    <h2 id="brand-art-heading" class="art-section__title">Brand art</h2>
+    <p class="art-section__lead">
+      Companion pieces for heroes, social, and empty states. Frame 8 energy — horizon, warmth, calm.
+    </p>
+    <div class="art-grid">
+      <ArtAsset
+        title="Horizon"
+        src="/art/horizon.png"
+        alt="Abstract horizon with amber sun on a navy and white divide, white wave form"
+        filename="horizon.png"
+        caption="Arrival and openness. Amber on the horizon line; cool navy sky. Use when the story is leaving the clinic on time."
+      />
+      <ArtAsset
+        title="Reflection"
+        src="/art/reflection.png"
+        alt="Symmetrical organic form reflected across a horizon with amber semicircle at center"
+        filename="reflection.png"
+        caption="Balance and relief. Still water, single warm sun. Use for calm moments — completion, trust, peer recommendation."
+      />
+    </div>
+  </section>
+
+  <div class="prose">
+    <ProseSection title="Color alignment">
+      <p>When recreating or extending these assets, map to system tokens:</p>
+      <table class="token-table">
+        <thead>
+          <tr><th>Role</th><th>Token</th><th>Hex</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dark fields</td><td><code>color.midnight</code></td><td>#0F1F30</td></tr>
+          <tr><td>Structure</td><td><code>color.slate</code></td><td>#2E4057</td></tr>
+          <tr><td>Light fields</td><td><code>color.page</code> / white planes</td><td>#F5F3F0</td></tr>
+          <tr><td>Warm accent</td><td><code>color.amber</code></td><td>#D4841A</td></tr>
+        </tbody>
+      </table>
+    </ProseSection>
+
+    <PhilosophyCallout title="Distinct from product illustration">
+      <p>
+        Storyboard panels in the product stay organic and journey-focused. These brand marks are
+        approved identity art — still flat and restrained, but allowed as logo companions on
+        external surfaces.
+      </p>
+    </PhilosophyCallout>
+  </div>
+</DocsLayout>
+
+<style>
+  .art-section {
+    margin: var(--space-section) 0;
+  }
+
+  .art-section__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-section);
+    line-height: var(--leading-section);
+    color: var(--color-midnight);
+    margin: 0 0 var(--space-6);
+  }
+
+  .art-section__lead {
+    margin: 0 0 var(--space-8);
+    max-width: var(--content-max);
+    color: var(--color-slate);
+    line-height: var(--leading-body);
+  }
+
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    max-width: 900px;
+  }
+
+  @media (max-width: 720px) {
+    .art-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
