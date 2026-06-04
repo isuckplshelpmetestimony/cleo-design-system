@@ -1,5 +1,5 @@
 ---
-import { navSections, isActive } from '../../config/nav';
+import { navSections, quietAuthoritySwatches, isActive } from '../../config/nav';
 
 interface Props {
   currentPath: string;
@@ -8,7 +8,7 @@ interface Props {
 const { currentPath } = Astro.props;
 ---
 
-<aside class="sidebar" transition:persist="cleo-sidebar">
+<aside class="sidebar" transition:persist="cleo-sidebar" transition:animate="none">
   <div class="sidebar-brand">
     <a href="/" class="brand-link">Cleo</a>
     <p class="brand-sub">Design System</p>
@@ -35,9 +35,42 @@ const { currentPath } = Astro.props;
       ))
     }
   </nav>
+
+  <div class="sidebar-swatches" aria-label="Quiet Authority palette">
+    <p class="swatches-label">Quiet Authority</p>
+    <div class="swatch-row">
+      {
+        quietAuthoritySwatches.map((s) => (
+          <div class="swatch-item" title={`${s.name} ${s.hex}`}>
+            <span class="swatch-chip" style={`background: ${s.hex}`} />
+            <span class="swatch-name">{s.name}</span>
+            <span class="swatch-hex">{s.hex}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </aside>
 
 <script>
+  const SIDEBAR_SCROLL_KEY = 'cleo-sidebar-scroll';
+
+  function getSidebar() {
+    return document.querySelector('.sidebar');
+  }
+
+  function saveSidebarScroll() {
+    const el = getSidebar();
+    if (el) sessionStorage.setItem(SIDEBAR_SCROLL_KEY, String(el.scrollTop));
+  }
+
+  function restoreSidebarScroll() {
+    const el = getSidebar();
+    if (!el) return;
+    const saved = sessionStorage.getItem(SIDEBAR_SCROLL_KEY);
+    if (saved != null) el.scrollTop = Number(saved);
+  }
+
   function updateSidebarActive() {
     const path = window.location.pathname;
     document.querySelectorAll('.sidebar .nav-link').forEach((link) => {
@@ -49,8 +82,20 @@ const { currentPath } = Astro.props;
     });
   }
 
-  updateSidebarActive();
-  document.addEventListener('astro:page-load', updateSidebarActive);
+  function initSidebar() {
+    updateSidebarActive();
+    restoreSidebarScroll();
+    const el = getSidebar();
+    if (el && !el.dataset.scrollBound) {
+      el.dataset.scrollBound = 'true';
+      el.addEventListener('scroll', saveSidebarScroll, { passive: true });
+    }
+  }
+
+  initSidebar();
+  document.addEventListener('astro:before-swap', saveSidebarScroll);
+  document.addEventListener('astro:after-swap', restoreSidebarScroll);
+  document.addEventListener('astro:page-load', initSidebar);
 </script>
 
 <style>
@@ -63,11 +108,14 @@ const { currentPath } = Astro.props;
     background: var(--color-surface-sidebar);
     padding: var(--space-8) var(--space-6);
     overflow-y: auto;
+    overflow-anchor: none;
     z-index: 100;
+    display: flex;
+    flex-direction: column;
   }
 
   .sidebar-brand {
-    margin-bottom: var(--space-10);
+    margin-bottom: var(--space-8);
   }
 
   .brand-link {
@@ -85,8 +133,12 @@ const { currentPath } = Astro.props;
     color: var(--color-steel);
   }
 
+  .sidebar-nav {
+    flex: 1;
+  }
+
   .nav-section {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
   }
 
   .nav-section-title {
@@ -96,7 +148,7 @@ const { currentPath } = Astro.props;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
     color: var(--color-steel);
-    margin: 0 0 var(--space-3);
+    margin: 0 0 var(--space-2);
   }
 
   .nav-list {
@@ -111,10 +163,10 @@ const { currentPath } = Astro.props;
 
   .nav-link {
     display: block;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-1) var(--space-4);
     margin-left: calc(-1 * var(--space-4));
     color: var(--color-slate);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     border-left: 2px solid transparent;
     transition:
       color var(--duration-fast) var(--ease-out),
@@ -130,11 +182,51 @@ const { currentPath } = Astro.props;
     border-left-color: var(--color-amber);
   }
 
-  @media (max-width: 900px) {
-    .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
-    }
+  .sidebar-swatches {
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: var(--border-hairline);
   }
+
+  .swatches-label {
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    margin: 0 0 var(--space-3);
+  }
+
+  .swatch-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .swatch-chip {
+    display: block;
+    width: 100%;
+    height: 14px;
+    border-radius: 3px;
+    border: var(--border-hairline);
+  }
+
+  .swatch-name {
+    font-size: 0.625rem;
+    color: var(--color-midnight);
+    font-weight: var(--weight-medium);
+  }
+
+  .swatch-hex {
+    font-size: 0.5625rem;
+    color: var(--color-steel);
+    font-family: var(--font-sans);
+  }
+
 </style>

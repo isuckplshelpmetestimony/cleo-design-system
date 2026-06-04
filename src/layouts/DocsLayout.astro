@@ -36,7 +36,7 @@ const pageTitle = title === 'Cleo' ? 'Cleo Design System' : `${title} · Cleo De
     <div class="docs-shell">
       <Sidebar currentPath={currentPath} />
       <main class="docs-main">
-        <article class="docs-content" transition:name="docs-content" transition:animate="fade">
+        <article class="docs-content" transition:animate="none">
           <slot />
         </article>
       </main>
@@ -46,12 +46,10 @@ const pageTitle = title === 'Cleo' ? 'Cleo Design System' : `${title} · Cleo De
 
 <style>
   .docs-shell {
-    display: flex;
     min-height: 100vh;
   }
 
   .docs-main {
-    flex: 1;
     margin-left: var(--sidebar-width);
     min-width: 0;
   }
@@ -60,6 +58,11 @@ const pageTitle = title === 'Cleo' ? 'Cleo Design System' : `${title} · Cleo De
     padding: var(--content-padding-y) var(--content-padding-x);
     padding-left: max(var(--content-padding-x), 4rem);
     max-width: calc(var(--content-max) + var(--content-padding-x) * 2 + 120px);
+  }
+
+  .docs-content:has(.doc-with-preview) {
+    max-width: none;
+    width: 100%;
   }
 
   .docs-content :global(.wide-band) {
@@ -72,38 +75,16 @@ const pageTitle = title === 'Cleo' ? 'Cleo Design System' : `${title} · Cleo De
 
   @media (max-width: 900px) {
     .docs-main {
-      margin-left: 0;
+      margin-left: var(--sidebar-width);
     }
-
-    .docs-shell {
-      flex-direction: column;
-    }
-  }
-</style>
-
-<style is:global>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  ::view-transition-old(docs-content),
-  ::view-transition-new(docs-content) {
-    animation-duration: var(--duration-base, 300ms);
-    animation-timing-function: var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
-  }
-
-  ::view-transition-new(docs-content) {
-    animation-name: fade-in;
   }
 </style>
 
 <script>
-  document.addEventListener('astro:after-swap', () => {
+  /** Reset main content scroll only — never touch the sidebar scroll position. */
+  function resetMainScroll() {
     window.scrollTo(0, 0);
-  });
+  }
+
+  document.addEventListener('astro:page-load', resetMainScroll);
 </script>

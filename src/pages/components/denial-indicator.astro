@@ -1,23 +1,28 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
 import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
 import DenialIndicatorShowcase from '../../components/cleo/DenialIndicatorShowcase.astro';
 ---
 
-<DocsLayout title="Denial prevention" description="Cleo denial risk indicator">
-  <div class="prose">
-    <h1>Denial prevention indicator</h1>
-    <p class="page-lead">
-      Not a warning — a guardian. Green when clean, amber when flagged, red only when the note
-      cannot be submitted.
-    </p>
-  </div>
+<ComponentDocLayout
+  title="Denial prevention indicator"
+  description="Not a warning — a guardian. Green when clean, amber when flagged, red only when the note cannot be submitted."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'Denial prevention' },
+  ]}
+  mvp="defer"
+  copyPath="src/components/cleo/DenialIndicator.tsx"
+  entryId="denial-guardian"
+>
+  <Fragment slot="preview">
+    <div class="wide-band">
+      <DenialIndicatorShowcase />
+    </div>
+  </Fragment>
 
-  <div class="wide-band">
-    <DenialIndicatorShowcase />
-  </div>
-
-  <div class="prose">
+  <Fragment slot="specs">
     <h2>Specifications</h2>
     <table class="token-table">
       <tbody>
@@ -51,5 +56,5 @@ import DenialIndicatorShowcase from '../../components/cleo/DenialIndicatorShowca
         below." Never alarm unless submission is blocked.
       </p>
     </PhilosophyCallout>
-  </div>
-</DocsLayout>
+  </Fragment>
+</ComponentDocLayout>

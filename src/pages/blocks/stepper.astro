@@ -1,0 +1,52 @@
+---
+import BlockDocLayout from '../../components/docs/BlockDocLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import VisitStepperShowcase from '../../components/cleo/blocks/VisitStepperShowcase';
+---
+
+<BlockDocLayout
+  title="Stepper"
+  description="Intake → Record → Treatment → SOAP → Plan → Bill — forward progress through the visit."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Stepper' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/VisitStepperShowcase.tsx"
+  entryId="stepper"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Below the status strip inside the visit shell</li>
+      <li>Maps clinical workflow order — not arbitrary EMR modules</li>
+      <li>Checkmarks for completed steps; number + label for current and upcoming</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>Linear order matching Julie’s daily note flow</li>
+        <li>Green check for completed steps</li>
+        <li>Midnight emphasis on the active step only</li>
+      </ul>
+      <ul slot="dont">
+        <li>Skipping steps without explicit user action</li>
+        <li>More than six poles on the MVP surface</li>
+        <li>Stepper hidden when tabs change</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <VisitStepperShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['stepper', 'visit-shell']} />
+  </Fragment>
+</BlockDocLayout>

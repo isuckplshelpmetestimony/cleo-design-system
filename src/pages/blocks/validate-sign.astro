@@ -1,0 +1,52 @@
+---
+import BlockDocLayout from '../../components/docs/BlockDocLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import ValidateSignShowcase from '../../components/cleo/blocks/ValidateSignShowcase';
+---
+
+<BlockDocLayout
+  title="Validate and sign"
+  description="Compliance gate before sign — jump-to-fix list, disabled sign CTA until all items resolve."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Validate and sign' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/ValidateSignShowcase.tsx"
+  entryId="validate-sign"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Ready to validate pole — before Sign note is enabled</li>
+      <li>Surfaces fixable issues with jump-to-fix actions (field or row)</li>
+      <li>Sign CTA stays disabled until the list is empty</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>Explicit list of blockers with deep links</li>
+        <li>Single amber sign CTA — disabled when issues remain</li>
+        <li>Copy: no silent sign</li>
+      </ul>
+      <ul slot="dont">
+        <li>Signing with unresolved compliance gaps</li>
+        <li>Generic “error” toast with no jump target</li>
+        <li>Multiple competing primary buttons</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <ValidateSignShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['validate-sign', 'visit-shell']} />
+  </Fragment>
+</BlockDocLayout>

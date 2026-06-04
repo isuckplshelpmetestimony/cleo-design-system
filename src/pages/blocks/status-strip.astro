@@ -1,0 +1,52 @@
+---
+import BlockDocLayout from '../../components/docs/BlockDocLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import StatusStripShowcase from '../../components/cleo/blocks/StatusStripShowcase';
+---
+
+<BlockDocLayout
+  title="Status strip"
+  description="Draft → Recording → Charting → Ready → Signed — poles visible across the full visit arc."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Status strip' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/StatusStripShowcase.tsx"
+  entryId="status-strip"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Top of the visit shell — one status read for the whole note</li>
+      <li>Shows where Julie is in draft → signed without opening sub-menus</li>
+      <li>Active pole uses midnight fill; completed poles use green text</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>All five poles always visible</li>
+        <li>Single active state at a time</li>
+        <li>Steel for upcoming, green for completed</li>
+      </ul>
+      <ul slot="dont">
+        <li>Red badges or alarm styling for in-progress charting</li>
+        <li>Hiding poles until a step is reached</li>
+        <li>Separate status per tab (one visit, one arc)</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <StatusStripShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['status-strip', 'visit-shell']} />
+  </Fragment>
+</BlockDocLayout>

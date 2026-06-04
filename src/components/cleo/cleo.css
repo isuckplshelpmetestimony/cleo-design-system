@@ -51,6 +51,18 @@
   background: rgba(46, 64, 87, 0.06);
 }
 
+.cleo-btn--sm {
+  font-size: 0.8125rem;
+  padding: 8px 16px;
+}
+
+.cleo-btn--block {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
 .cleo-btn:focus-visible {
   outline: 2px solid var(--color-midnight);
   outline-offset: 2px;
@@ -362,6 +374,22 @@
 .cleo-status--error {
   background: rgba(139, 58, 58, 0.12);
   color: var(--color-red);
+}
+
+.cleo-chip-suggested {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
+  background: var(--chip-suggested-bg);
+  border: 0.5px solid var(--chip-suggested-border);
+  border-radius: 4px;
+  color: var(--color-slate);
+  white-space: nowrap;
 }
 
 .cleo-denial {

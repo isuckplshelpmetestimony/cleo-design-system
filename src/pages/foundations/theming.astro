@@ -1,0 +1,91 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import TokenSwatch from '../../components/docs/TokenSwatch.astro';
+---
+
+<DocsLayout title="Theming" description="Semantic theming — Cleo Design System">
+  <div class="prose">
+    <h1>Theming</h1>
+    <p class="page-lead">
+      Primitive tokens in <code>tokens.css</code> map to semantic roles, then to components
+      and blocks. Never hardcode hex in component files.
+    </p>
+
+    <h2>Primitive → semantic</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><code>--color-page</code></td>
+          <td>Default canvas</td>
+        </tr>
+        <tr>
+          <td><code>--color-text-primary</code></td>
+          <td>Body copy → midnight</td>
+        </tr>
+        <tr>
+          <td><code>--color-text-muted</code></td>
+          <td>Labels, metadata → steel</td>
+        </tr>
+        <tr>
+          <td><code>--color-interactive</code></td>
+          <td>Buttons, links → slate</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Visit status strip</h2>
+    <table class="token-table">
+      <tbody>
+        <tr><td><code>--status-draft</code></td><td>Draft</td></tr>
+        <tr><td><code>--status-recording</code></td><td>Recording</td></tr>
+        <tr><td><code>--status-charting</code></td><td>Charting (active)</td></tr>
+        <tr><td><code>--status-validate</code></td><td>Ready to validate</td></tr>
+        <tr><td><code>--status-signed</code></td><td>Signed (locked)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Surfaces</h2>
+    <table class="token-table">
+      <tbody>
+        <tr><td><code>--surface-locked</code></td><td>Locked band — muted red tint (<code>--color-red</code> at 10%)</td></tr>
+        <tr><td><code>--locked-band-border</code></td><td>Locked band top border</td></tr>
+        <tr><td><code>--locked-band-text</code></td><td>Locked band copy and icon</td></tr>
+        <tr><td><code>--surface-preview</code></td><td>Doc preview panels</td></tr>
+        <tr><td><code>--surface-band-muted</code></td><td>Locked band background</td></tr>
+      </tbody>
+    </table>
+
+    <h2>HITL</h2>
+    <table class="token-table">
+      <tbody>
+        <tr><td><code>--chip-suggested-bg</code></td><td>+ Suggested chip fill</td></tr>
+        <tr><td><code>--chip-suggested-border</code></td><td>Chip border</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Accent discipline</h2>
+    <p>
+      <code>--color-amber</code> is the only warm accent. One important action or one nav
+      indicator per view — not both competing.
+    </p>
+  </div>
+
+  <div class="wide-band">
+    <div class="swatch-grid">
+      <TokenSwatch name="Page" token="--color-page" hex="#F5F3F0" />
+      <TokenSwatch name="Midnight" token="--color-midnight" hex="#0F1F30" />
+      <TokenSwatch name="Slate" token="--color-slate" hex="#2E4057" />
+      <TokenSwatch name="Amber" token="--color-amber" hex="#D4841A" />
+      <TokenSwatch name="Green" token="--color-green" hex="#3D6B4F" />
+      <TokenSwatch name="Fog" token="--color-fog" hex="#F4F5F7" />
+    </div>
+  </div>
+</DocsLayout>
+
+<style>
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-4);
+  }
+</style>

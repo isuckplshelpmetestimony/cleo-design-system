@@ -1,0 +1,76 @@
+---
+import PatternDocLayout from '../../components/docs/PatternDocLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import HitlShowcase from '../../components/cleo/patterns/HitlShowcase';
+---
+
+<PatternDocLayout
+  title="Human-in-the-loop (HITL)"
+  description="AI suggests; the therapist accepts. Never silent auto-apply — closed geometry rule five."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'HITL' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/patterns/HitlShowcase.tsx"
+  entryId="hitl"
+  withVisitContext={true}
+  previewContextLabel="In visit shell"
+  previewBlockLabel="Suggested row"
+>
+  <Fragment slot="whenToUse">
+    <h2>Pattern</h2>
+    <ul>
+      <li>
+        Suggestions appear as inline chips or rows — <code>+ Suggested</code> with fog tint and slate
+        border
+      </li>
+      <li>Therapist taps to accept, edit, or dismiss — each action is explicit</li>
+      <li>No chat bubbles, no anthropomorphic assistant persona</li>
+      <li>Per-row granularity: skilled comment per exercise, not one global comment under a table</li>
+    </ul>
+
+    <h2>Tokens</h2>
+    <table class="token-table">
+      <tbody>
+        <tr>
+          <td><strong>Chip background</strong></td>
+          <td><code>--chip-suggested-bg</code> (fog tint)</td>
+        </tr>
+        <tr>
+          <td><strong>Chip border</strong></td>
+          <td><code>--chip-suggested-border</code> (slate hairline)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Copy</h2>
+    <p>We say: "Suggested revision below." We never say: "Cleo AI optimized your note."</p>
+
+    <PhilosophyCallout>
+      <p>
+        Julie remains the author. Cleo is the careful colleague who flags phrasing — not the system
+        that overwrites clinical judgment.
+      </p>
+    </PhilosophyCallout>
+
+    <p>
+      See <a href="/blocks/visit-shell">Visit shell block</a> and
+      <a href="/blocks/treatment-table">Treatment table</a> for implementation.
+    </p>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <HitlShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable
+      title="Related registry"
+      filterIds={['hitl', 'visit-shell', 'treatment-table']}
+    />
+  </Fragment>
+</PatternDocLayout>

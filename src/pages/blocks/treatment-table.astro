@@ -1,0 +1,52 @@
+---
+import BlockDocLayout from '../../components/docs/BlockDocLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import TreatmentTableShowcase from '../../components/cleo/blocks/TreatmentTableShowcase';
+---
+
+<BlockDocLayout
+  title="Treatment table"
+  description="Exercise rows with per-row skilled comment and HITL suggestion chips — not one global comment."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Treatment table' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/TreatmentTableShowcase.tsx"
+  entryId="treatment-table"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Treatment tab body in the visit shell</li>
+      <li>Each exercise row: name, sets/reps, skilled comment, optional + Suggested chip</li>
+      <li>Human-in-the-loop: therapist accepts or edits AI suggestions per row</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>Skilled comment column on every row</li>
+        <li>Suggestion chips in slate tint — not alarm red</li>
+        <li>+ Add exercise as a quiet text control</li>
+      </ul>
+      <ul slot="dont">
+        <li>One skilled comment field under the whole table</li>
+        <li>Auto-accepting all suggestions without review</li>
+        <li>Dense EMR grid with 12+ columns</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <TreatmentTableShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['treatment-table', 'visit-shell']} />
+  </Fragment>
+</BlockDocLayout>

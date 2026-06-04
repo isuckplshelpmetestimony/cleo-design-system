@@ -1,0 +1,64 @@
+---
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
+import AnatomyDiagram from '../../components/docs/AnatomyDiagram.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import VisitShellShowcase from '../../components/cleo/blocks/VisitShellShowcase';
+---
+
+<ComponentDocLayout
+  title="Visit shell block"
+  description="One circumnavigable iPad surface for Julie's daily note — closed geometry, not hospital EMR."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Visit shell block' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/VisitShellShowcase.tsx"
+  entryId="visit-shell"
+  withPreview={true}
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Daily note, initial eval, or progress note @ ~10 visits</li>
+      <li>One patient, one visit, one day — single document context</li>
+      <li>iPad Safari primary; desktop for dev convenience only</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="anatomy">
+    <h2>Anatomy</h2>
+    <AnatomyDiagram />
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>One primary forward CTA per screen</li>
+        <li>Tabs stay visible across steps</li>
+        <li>Billing locked until treatment accepted</li>
+        <li>Skilled comment per exercise row</li>
+      </ul>
+      <ul slot="dont">
+        <li>Infinite sidebar modules (flat EMR)</li>
+        <li>Red alarm banners for reviewable issues</li>
+        <li>Purple or neon SaaS palette</li>
+        <li>One global skilled comment under whole table</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <VisitShellShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable
+      title="Related registry"
+      filterIds={['visit-shell', 'status-strip', 'treatment-table', 'denial-guardian']}
+    />
+  </Fragment>
+</ComponentDocLayout>

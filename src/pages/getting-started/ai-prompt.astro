@@ -1,0 +1,34 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="AI prompt" description="Using Cleo DS with AI — Cleo Design System">
+  <div class="prose">
+    <h1>For AI assistants</h1>
+    <p class="page-lead">
+      Automatic vault → implementation. Do not ask the engineer to copy paths from doc pages.
+    </p>
+
+    <p>
+      <strong>Start here on the site:</strong>
+      <a href="/getting-started/cursor-vault">Cursor + Cleo Vault</a> — full playbook, vault
+      keyword map, and repo file list (same content as <code>AGENTS.md</code>).
+    </p>
+
+    <h2>Required context</h2>
+    <ul>
+      <li><code>CLEO_DESIGN_SYSTEM_PROMPT.md</code> — Quiet Authority tokens and patterns</li>
+      <li><code>src/config/registry.ts</code> — <code>vaultKeywords</code>, <code>copyPath</code>, <code>relatedIds</code></li>
+      <li><code>src/lib/resolve-registry-from-text.ts</code> — keyword → implementation plan</li>
+      <li>Skill <code>cleo-second-brain-query</code> when Cleo Vault / Obsidian is referenced</li>
+    </ul>
+
+    <h2>Doc pages (reference)</h2>
+    <ul>
+      <li>Principles: <a href="/principles">/principles</a></li>
+      <li>Visit shell: <a href="/blocks/visit-shell">/blocks/visit-shell</a></li>
+      <li>Full registry: <a href="/registry">/registry</a></li>
+    </ul>
+    <p>Never import Material, default Tailwind, or bright SaaS palettes without mapping to Cleo tokens.</p>
+  </div>
+</DocsLayout>

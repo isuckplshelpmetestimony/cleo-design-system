@@ -73,4 +73,22 @@
 
   /* Borders */
   --border-hairline: 0.5px solid var(--color-slate);
+
+  /* Visit status strip */
+  --status-draft: var(--color-steel);
+  --status-recording: var(--color-slate);
+  --status-charting: var(--color-midnight);
+  --status-validate: var(--color-amber);
+  --status-signed: var(--color-green);
+
+  /* Surfaces */
+  --surface-locked: rgba(139, 58, 58, 0.1);
+  --locked-band-border: var(--color-red);
+  --locked-band-text: var(--color-red);
+  --surface-preview: var(--color-fog);
+  --surface-band-muted: rgba(46, 64, 87, 0.06);
+
+  /* HITL */
+  --chip-suggested-bg: rgba(46, 64, 87, 0.08);
+  --chip-suggested-border: var(--color-slate);
 }

@@ -1,0 +1,69 @@
+---
+interface Part {
+  id: string;
+  label: string;
+  top: string;
+  left: string;
+  width: string;
+  height: string;
+}
+
+const parts: Part[] = [
+  { id: 'header', label: 'Header', top: '4%', left: '4%', width: '92%', height: '12%' },
+  { id: 'status', label: 'Status strip', top: '18%', left: '4%', width: '92%', height: '8%' },
+  { id: 'stepper', label: 'Stepper', top: '28%', left: '4%', width: '92%', height: '8%' },
+  { id: 'tabs', label: 'Tab bar', top: '38%', left: '4%', width: '92%', height: '8%' },
+  { id: 'body', label: 'Section body', top: '48%', left: '4%', width: '92%', height: '36%' },
+  { id: 'band', label: 'Bottom band', top: '86%', left: '4%', width: '92%', height: '10%' },
+];
+---
+
+<div class="anatomy-diagram" role="img" aria-label="Visit shell anatomy diagram">
+  <div class="anatomy-frame">
+    {
+      parts.map((part) => (
+        <div
+          class="anatomy-part"
+          style={`top: ${part.top}; left: ${part.left}; width: ${part.width}; height: ${part.height}`}
+        >
+          <span class="anatomy-label">{part.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .anatomy-diagram {
+    margin: var(--space-6) 0;
+  }
+
+  .anatomy-frame {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface-elevated);
+    border: var(--border-hairline);
+    border-radius: var(--radius-md);
+  }
+
+  .anatomy-part {
+    position: absolute;
+    border: 1px dashed var(--color-steel);
+    border-radius: var(--radius-sm);
+    background: rgba(46, 64, 87, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-1);
+  }
+
+  .anatomy-label {
+    font-size: 0.625rem;
+    font-weight: var(--weight-medium);
+    color: var(--color-slate);
+    text-align: center;
+    line-height: 1.2;
+  }
+</style>

@@ -41,11 +41,11 @@ export function NoteCompletionFlow() {
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
                 <rect
                   key={i}
+                  className="note-flow__wave-bar"
                   x={i * 22 + 4}
                   y={24 - (8 + (i % 4) * 4)}
                   width={8}
                   height={16 + (i % 5) * 6}
-                  fill="#2E4057"
                   opacity={0.4 + (i % 3) * 0.15}
                   rx={2}
                 />
@@ -69,9 +69,13 @@ export function NoteCompletionFlow() {
               Patient presents with left shoulder pain, 6 weeks duration. ROM limited in abduction.
               Plan: progressive strengthening, manual therapy 2x/week.
             </p>
-            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
-              <Button variant="ghost">Edit section</Button>
-              <Button variant="ghost">Add objective</Button>
+            <div className="note-flow__review-actions">
+              <Button variant="ghost" className="cleo-btn--sm">
+                Edit section
+              </Button>
+              <Button variant="ghost" className="cleo-btn--sm">
+                Add objective
+              </Button>
             </div>
           </div>
         )}
@@ -79,18 +83,20 @@ export function NoteCompletionFlow() {
         {step === 'sign' && (
           <div className="note-flow__sign">
             <p className="note-flow__hint">Ready to sign and submit</p>
-            <p className="note-flow__note-text" style={{ fontSize: '0.9375rem' }}>
+            <p className="note-flow__note-text note-flow__sign-line">
               Maria Chen — Initial evaluation — May 16, 2026
             </p>
-            <Button variant="amber">Sign and submit</Button>
+            <Button variant="amber" className="cleo-btn--sm">
+              Sign and submit
+            </Button>
           </div>
         )}
 
         {step === 'complete' && (
           <div className="note-flow__complete">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden style={{ marginBottom: '1rem' }}>
-              <circle cx="12" cy="12" r="11" fill="none" stroke="#D4841A" strokeWidth="1.5" />
-              <path d="M7 12l3 3 7-7" fill="none" stroke="#D4841A" strokeWidth="1.5" />
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden className="note-flow__complete-icon">
+              <circle className="note-flow__complete-mark" cx="12" cy="12" r="11" fill="none" strokeWidth="1.5" />
+              <path className="note-flow__complete-mark" d="M7 12l3 3 7-7" fill="none" strokeWidth="1.5" />
             </svg>
             <h4 className="note-flow__complete-title">Maria Chen — Initial evaluation</h4>
             <p className="note-flow__timestamp">Signed · 4:47 PM</p>
@@ -99,8 +105,11 @@ export function NoteCompletionFlow() {
       </div>
 
       <p className="note-flow__step-note">
-        Step {idx + 1} of 5 — {idx === 4 ? 'The quietest screen in the product.' : 'Each state is quieter than the last.'}
+        Step {idx + 1} of 5 —{' '}
+        {idx === 4 ? 'The quietest screen in the product.' : 'Each state is quieter than the last.'}
       </p>
     </div>
   );
 }
+
+export default NoteCompletionFlow;

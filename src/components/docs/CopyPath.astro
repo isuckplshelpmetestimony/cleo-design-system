@@ -1,0 +1,111 @@
+---
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const inputId = `copy-path-${path.replace(/[^a-z0-9]/gi, '-')}`;
+---
+
+<div class="copy-path">
+  <label class="copy-path-label" for={inputId}>Copy path</label>
+  <div class="copy-path-row">
+    <input id={inputId} type="text" class="copy-path-input" value={path} readonly />
+    <button type="button" class="copy-path-btn" data-copy-target={inputId} aria-label="Copy path">
+      Copy
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-path-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const targetId = btn.getAttribute('data-copy-target');
+      if (!targetId) return;
+      const input = document.getElementById(targetId) as HTMLInputElement | null;
+      if (!input) return;
+      try {
+        await navigator.clipboard.writeText(input.value);
+        const original = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 1500);
+      } catch {
+        input.select();
+        document.execCommand('copy');
+      }
+    });
+  });
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('.copy-path-btn').forEach((btn) => {
+      if ((btn as HTMLElement).dataset.bound) return;
+      (btn as HTMLElement).dataset.bound = 'true';
+      btn.addEventListener('click', async () => {
+        const targetId = btn.getAttribute('data-copy-target');
+        if (!targetId) return;
+        const input = document.getElementById(targetId) as HTMLInputElement | null;
+        if (!input) return;
+        try {
+          await navigator.clipboard.writeText(input.value);
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => {
+            btn.textContent = original;
+          }, 1500);
+        } catch {
+          input.select();
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .copy-path {
+    margin: var(--space-8) 0;
+  }
+
+  .copy-path-label {
+    display: block;
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    margin-bottom: var(--space-2);
+  }
+
+  .copy-path-row {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .copy-path-input {
+    flex: 1;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    padding: var(--space-2) var(--space-3);
+    border: var(--border-hairline);
+    border-radius: var(--radius-sm);
+    background: var(--color-fog);
+    color: var(--color-midnight);
+  }
+
+  .copy-path-btn {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: var(--weight-medium);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-hairline);
+    border-radius: var(--radius-sm);
+    background: var(--color-slate);
+    color: var(--color-cream);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+
+  .copy-path-btn:hover {
+    background: var(--color-midnight);
+  }
+</style>

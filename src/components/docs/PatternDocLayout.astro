@@ -1,0 +1,66 @@
+---
+import ComponentDocLayout from './ComponentDocLayout.astro';
+import VisitShellShowcase from '../cleo/blocks/VisitShellShowcase';
+import type { MvpTag } from '../../config/registry';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  pageTitle?: string;
+  breadcrumbs?: Crumb[];
+  mvp?: MvpTag;
+  device?: string;
+  copyPath?: string;
+  entryId?: string;
+  /** Show visit shell above the pattern preview (HITL, AI assistance). */
+  withVisitContext?: boolean;
+  previewContextLabel?: string;
+  previewBlockLabel?: string;
+}
+
+const {
+  title,
+  description,
+  pageTitle = title,
+  breadcrumbs = [],
+  mvp = 'core',
+  device,
+  copyPath,
+  entryId,
+  withVisitContext = false,
+  previewContextLabel = 'In visit shell',
+  previewBlockLabel = 'This pattern',
+} = Astro.props;
+---
+
+<ComponentDocLayout
+  title={title}
+  description={description}
+  pageTitle={pageTitle}
+  breadcrumbs={breadcrumbs}
+  mvp={mvp}
+  device={device}
+  copyPath={copyPath}
+  entryId={entryId}
+  withPreview={true}
+  stackedPreview={withVisitContext}
+  previewContextLabel={previewContextLabel}
+  previewBlockLabel={previewBlockLabel}
+>
+  {
+    withVisitContext && (
+      <Fragment slot="contextPreview">
+        <VisitShellShowcase client:load />
+      </Fragment>
+    )
+  }
+  <slot name="whenToUse" slot="whenToUse" />
+  <slot name="specs" slot="specs" />
+  <slot name="preview" slot="preview" />
+  <slot name="registry" slot="registry" />
+</ComponentDocLayout>

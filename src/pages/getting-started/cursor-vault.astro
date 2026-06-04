@@ -1,0 +1,178 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import { registryEntries } from '../../config/registry';
+
+const agentEntries = registryEntries.filter(
+  (e) => e.vaultKeywords?.length || e.copyPath
+);
+---
+
+<DocsLayout
+  title="Cursor + Cleo Vault"
+  description="Full agent playbook — vault scan to implementation without manual copy paths"
+>
+  <div class="prose">
+    <h1>Cursor + Cleo Vault</h1>
+    <p class="page-lead">
+      Canonical playbook for <strong>Enzo</strong> and Cursor: scan Obsidian vault → resolve registry
+      → open implementation files automatically. Humans do not hunt copy paths by hand.
+    </p>
+    <p>
+      This page mirrors <code>AGENTS.md</code> in the repo. Cursor also loads
+      <code>.cursor/rules/cleo-vault-to-ds.mdc</code> and skill
+      <code>cleo-second-brain-query</code> when vault work is in scope.
+    </p>
+
+    <h2>Automatic workflow</h2>
+    <ol>
+      <li>
+        <strong>Read vault</strong> — Cleo Second Brain (iCloud Obsidian). Start in
+        <code>wiki/synthesis/</code>. Never edit <code>raw/</code>.
+      </li>
+      <li>
+        <strong>Resolve UI</strong> — Match vault text to registry via
+        <code>vaultKeywords</code> in <a href="/registry">Registry</a> or
+        <code>src/lib/resolve-registry-from-text.ts</code>.
+      </li>
+      <li>
+        <strong>Build plan</strong> — <code>buildImplementationPlan(entryId)</code> returns
+        <code>copyPath</code>s, doc hrefs, related entries, and pattern pages.
+      </li>
+      <li>
+        <strong>Execute</strong> — Open every implementation file, doc source under
+        <code>src/pages</code>, <code>src/styles/tokens.css</code>, and
+        <code>CLEO_DESIGN_SYSTEM_PROMPT.md</code>. Do not ask the engineer to paste paths or click
+        Copy on block pages.
+      </li>
+    </ol>
+
+    <h2>Default Julie MVP stack</h2>
+    <p>
+      If vault text is about Julie pilot, daily note, or iPad without a narrower match:
+    </p>
+    <ul>
+      <li>
+        Primary: <a href="/blocks/visit-shell">visit-shell</a> —
+        <code>src/components/cleo/blocks/VisitShellShowcase.tsx</code>
+      </li>
+      <li>
+        Related: status-strip, stepper, tab-bar, treatment-table, locked-band (see
+        <a href="/registry">Registry</a>)
+      </li>
+      <li>
+        Components: <a href="/components/hitl">HITL</a>,
+        <a href="/components/ipad-constraints">iPad constraints</a>
+      </li>
+    </ul>
+
+    <h2>Quiet Authority (non-negotiable)</h2>
+    <ul>
+      <li>Tokens from <a href="/foundations/theming">theming</a> / <code>src/styles/tokens.css</code> only</li>
+      <li>No Material, default Tailwind, or bright SaaS palettes without Cleo mapping</li>
+      <li>Amber accent once per screen</li>
+      <li>iPad Safari is acceptance device for Julie MVP blocks</li>
+    </ul>
+
+    <h2>Copy path on block pages</h2>
+    <p>
+      The <strong>Copy path</strong> control on component docs is for humans browsing this site.
+      <strong>Agents</strong> use the registry table below and <code>registry.ts</code> — never
+      instruct Enzo to click Copy.
+    </p>
+
+    <h2>Repo files (same truth as this page)</h2>
+    <ul>
+      <li><code>AGENTS.md</code> — agent entry point</li>
+      <li><code>src/config/registry.ts</code> — <code>vaultKeywords</code>, <code>copyPath</code>, <code>relatedIds</code></li>
+      <li><code>src/lib/resolve-registry-from-text.ts</code> — keyword → plan</li>
+      <li><code>CLEO_DESIGN_SYSTEM_PROMPT.md</code> — full AI system prompt</li>
+    </ul>
+
+    <h2>Vault keyword map</h2>
+    <p>Lowercase phrases in Cleo Vault / Obsidian that resolve to each registry entry.</p>
+  </div>
+
+  <div class="vault-map-wrap">
+    <table class="vault-map-table">
+      <thead>
+        <tr>
+          <th>Registry id</th>
+          <th>Name</th>
+          <th>Vault keywords</th>
+          <th>Implementation path</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          agentEntries.map((entry) => (
+            <tr>
+              <td><code>{entry.id}</code></td>
+              <td>
+                <a href={entry.href}>{entry.name}</a>
+              </td>
+              <td class="keywords">
+                {entry.vaultKeywords?.length ? (
+                  entry.vaultKeywords.join(', ')
+                ) : (
+                  <span class="muted">—</span>
+                )}
+              </td>
+              <td class="path">
+                {entry.copyPath ? (
+                  <code>{entry.copyPath}</code>
+                ) : (
+                  <span class="muted">Planned</span>
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</DocsLayout>
+
+<style>
+  .vault-map-wrap {
+    margin: var(--space-8) 0 var(--space-12);
+    overflow-x: auto;
+  }
+
+  .vault-map-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+  }
+
+  .vault-map-table th {
+    text-align: left;
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    padding: var(--space-3) var(--space-4) var(--space-3) 0;
+    border-bottom: var(--border-hairline);
+  }
+
+  .vault-map-table td {
+    padding: var(--space-3) var(--space-4) var(--space-3) 0;
+    border-bottom: var(--border-hairline);
+    color: var(--color-midnight);
+    vertical-align: top;
+  }
+
+  .vault-map-table .keywords {
+    color: var(--color-steel);
+    max-width: 280px;
+  }
+
+  .vault-map-table .path code {
+    font-size: 0.75rem;
+    word-break: break-all;
+  }
+
+  .muted {
+    color: var(--color-steel);
+  }
+</style>

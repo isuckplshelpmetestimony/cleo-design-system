@@ -1,0 +1,18 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+---
+
+<DocsLayout title="Registry" description="Cleo Design System component and block registry">
+  <div class="prose">
+    <h1>Registry</h1>
+    <p class="page-lead">
+      Catalog of foundations, components, and blocks — including <code>vaultKeywords</code> and
+      agent implementation paths for Cursor. See
+      <a href="/getting-started/cursor-vault">Cursor + Cleo Vault</a> for the full automatic
+      workflow.
+    </p>
+  </div>
+
+  <RegistryTable title="" showAgentColumns={true} />
+</DocsLayout>

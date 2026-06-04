@@ -1,20 +1,28 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
 import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
 import CardShowcase from '../../components/cleo/CardShowcase.astro';
 ---
 
-<DocsLayout title="Cards" description="Cleo note card component">
-  <div class="prose">
-    <h1>Note card</h1>
-    <p class="page-lead">The therapist's primary work object. A clean piece of paper, not a dashboard widget.</p>
-  </div>
+<ComponentDocLayout
+  title="Note card"
+  description="The therapist's primary work object. A clean piece of paper, not a dashboard widget."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'Cards' },
+  ]}
+  mvp="core"
+  copyPath="src/components/cleo/NoteCard.tsx"
+  entryId="cards"
+>
+  <Fragment slot="preview">
+    <div class="wide-band">
+      <CardShowcase />
+    </div>
+  </Fragment>
 
-  <div class="wide-band">
-    <CardShowcase />
-  </div>
-
-  <div class="prose">
+  <Fragment slot="specs">
     <h2>Specifications</h2>
     <table class="token-table">
       <tbody>
@@ -48,5 +56,5 @@ import CardShowcase from '../../components/cleo/CardShowcase.astro';
     <PhilosophyCallout>
       <p>Cards hold clinical work — they should feel trustworthy and uncluttered, matching the quiet conviction of Frame 7 as notes finish early. Complete cards are the visually quietest.</p>
     </PhilosophyCallout>
-  </div>
-</DocsLayout>
+  </Fragment>
+</ComponentDocLayout>

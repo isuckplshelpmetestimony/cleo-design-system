@@ -1,0 +1,52 @@
+---
+import BlockDocLayout from '../../components/docs/BlockDocLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import VisitTabBarShowcase from '../../components/cleo/blocks/VisitTabBarShowcase';
+---
+
+<BlockDocLayout
+  title="Tab bar"
+  description="Circumnavigable visit tabs — Treatment, SOAP, Plan (POC), Bill stay visible across steps."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Tab bar' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/VisitTabBarShowcase.tsx"
+  entryId="tab-bar"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Primary section switcher inside the visit shell body</li>
+      <li>Julie can jump between Treatment, SOAP, Plan, and Bill without losing context</li>
+      <li>Amber underline on the active tab — same pattern across all visit types</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>Tabs persist while the stepper advances</li>
+        <li>Hairline bottom border; amber active indicator</li>
+        <li>Plan labeled “Plan (POC)” when POC applies</li>
+      </ul>
+      <ul slot="dont">
+        <li>Overflow menu hiding Bill or Plan</li>
+        <li>Neon or purple active states</li>
+        <li>Replacing tabs with a flat sidebar module list</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <VisitTabBarShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['tab-bar', 'visit-shell']} />
+  </Fragment>
+</BlockDocLayout>

@@ -1,0 +1,170 @@
+---
+import { registryEntries, type RegistryLayer, type RegistryStatus } from '../../config/registry';
+
+interface Props {
+  filterIds?: string[];
+  filterLayer?: RegistryLayer;
+  title?: string;
+  showAgentColumns?: boolean;
+}
+
+const { filterIds, filterLayer, title = 'Registry', showAgentColumns = false } = Astro.props;
+
+let entries = [...registryEntries];
+if (filterIds?.length) {
+  entries = entries.filter((e) => filterIds.includes(e.id));
+}
+if (filterLayer) {
+  entries = entries.filter((e) => e.layer === filterLayer);
+}
+
+const statusLabel: Record<RegistryStatus, string> = {
+  ready: 'Ready',
+  draft: 'In progress',
+  planned: 'Planned',
+};
+---
+
+<div class="registry-table-wrap">
+  {title && <h2 class="registry-title">{title}</h2>}
+  <table class="registry-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Layer</th>
+        <th>Status</th>
+        <th>MVP tag</th>
+        {showAgentColumns && <th>Vault keywords</th>}
+        {showAgentColumns && <th>Implementation path</th>}
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        entries.map((entry) => (
+          <tr>
+            <td>
+              <a href={entry.href} class="registry-name">{entry.name}</a>
+            </td>
+            <td class="capitalize">{entry.layer}</td>
+            <td>
+              <span class:list={['status-dot', `status-${entry.status}`]} />
+              {statusLabel[entry.status]}
+            </td>
+            <td><span class="mvp-tag">{entry.mvp}</span></td>
+            {
+              showAgentColumns && (
+                <td class="keywords">
+                  {entry.vaultKeywords?.length ? entry.vaultKeywords.join(', ') : '—'}
+                </td>
+              )
+            }
+            {
+              showAgentColumns && (
+                <td class="agent-path">
+                  {entry.copyPath ? <code>{entry.copyPath}</code> : '—'}
+                </td>
+              )
+            }
+            <td class="updated">{entry.updated}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .registry-table-wrap {
+    margin: var(--space-10) 0;
+    overflow-x: auto;
+  }
+
+  .registry-title {
+    font-size: 1.25rem;
+    margin-top: 0;
+  }
+
+  .registry-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .registry-table th {
+    text-align: left;
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    padding: var(--space-3) var(--space-4) var(--space-3) 0;
+    border-bottom: var(--border-hairline);
+  }
+
+  .registry-table td {
+    padding: var(--space-3) var(--space-4) var(--space-3) 0;
+    border-bottom: var(--border-hairline);
+    color: var(--color-midnight);
+    vertical-align: middle;
+  }
+
+  .registry-name {
+    font-weight: var(--weight-medium);
+    color: var(--color-midnight);
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+    color: var(--color-steel);
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: var(--space-2);
+    vertical-align: middle;
+  }
+
+  .status-ready {
+    background: var(--color-green);
+  }
+
+  .status-draft {
+    background: var(--color-amber);
+  }
+
+  .status-planned {
+    background: var(--color-steel);
+  }
+
+  .mvp-tag {
+    font-size: var(--text-label);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    color: var(--color-steel);
+  }
+
+  .updated {
+    color: var(--color-steel);
+    white-space: nowrap;
+  }
+
+  .keywords {
+    color: var(--color-steel);
+    font-size: 0.75rem;
+    max-width: 200px;
+    vertical-align: top;
+  }
+
+  .agent-path {
+    vertical-align: top;
+  }
+
+  .agent-path code {
+    font-size: 0.6875rem;
+    word-break: break-all;
+  }
+</style>

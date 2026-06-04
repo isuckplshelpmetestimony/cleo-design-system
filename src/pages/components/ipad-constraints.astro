@@ -1,0 +1,72 @@
+---
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import IpadConstraintsShowcase from '../../components/cleo/patterns/IpadConstraintsShowcase';
+---
+
+<ComponentDocLayout
+  title="iPad constraints"
+  description="Safari on iPad landscape is the primary surface. Desktop is for dev convenience — not the design target."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'iPad constraints' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/patterns/IpadConstraintsShowcase.tsx"
+  entryId="ipad-constraints"
+  withPreview={true}
+>
+  <Fragment slot="whenToUse">
+    <h2>Viewport</h2>
+    <ul>
+      <li>
+        Landscape orientation primary — treatment table and visit tabs must remain readable without
+        horizontal scroll
+      </li>
+      <li>Touch targets ≥ 44px where interactive</li>
+      <li>No hover-only affordances — all actions reachable by tap</li>
+    </ul>
+
+    <h2>Layout</h2>
+    <ul>
+      <li>One visit shell per screen — no infinite sidebar modules</li>
+      <li>260px sidebar max for app chrome; visit body uses remaining width</li>
+      <li>
+        One primary forward CTA per screen — slate button, amber reserved for tab underline OR sign
+        CTA
+      </li>
+      <li>Locked band at bottom when downstream sections are unavailable</li>
+    </ul>
+
+    <h2>Acceptance</h2>
+    <p>
+      Julie completes a daily note @ ~10 visits on iPad without leaving the visit shell. Status strip,
+      stepper, and tabs stay visible throughout.
+    </p>
+
+    <PhilosophyCallout>
+      <p>
+        Closed geometry on a plane, not a sphere — the visit is bounded. iPad constraints enforce that
+        boundary in hardware.
+      </p>
+    </PhilosophyCallout>
+
+    <p>
+      See <a href="/blocks/visit-shell">Visit shell block</a> for the reference implementation.
+    </p>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <IpadConstraintsShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable
+      title="Related registry"
+      filterIds={['ipad-constraints', 'visit-shell', 'locked-band']}
+    />
+  </Fragment>
+</ComponentDocLayout>

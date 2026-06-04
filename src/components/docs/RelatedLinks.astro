@@ -1,0 +1,66 @@
+---
+import { getRelatedEntries } from '../../config/registry';
+
+interface Props {
+  entryId?: string;
+  links?: { label: string; href: string }[];
+}
+
+const { entryId, links = [] } = Astro.props;
+
+const related = entryId ? getRelatedEntries(entryId) : [];
+const allLinks = [
+  ...links,
+  ...related.map((e) => ({ label: e.name, href: e.href })),
+  { label: 'Principles', href: '/principles' },
+  { label: 'Registry', href: '/registry' },
+  { label: 'Theming', href: '/foundations/theming' },
+];
+
+const unique = allLinks.filter(
+  (link, i, arr) => arr.findIndex((l) => l.href === link.href) === i
+);
+---
+
+<aside class="related-links" aria-label="Related">
+  <p class="related-label">Related</p>
+  <ul>
+    {unique.map((link) => (
+      <li><a href={link.href}>{link.label}</a></li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+  .related-links {
+    margin-top: var(--space-section);
+    padding-top: var(--space-8);
+    border-top: var(--border-hairline);
+  }
+
+  .related-label {
+    font-size: var(--text-label);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-steel);
+    margin: 0 0 var(--space-3);
+  }
+
+  .related-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  .related-links li {
+    margin: 0;
+  }
+
+  .related-links a {
+    font-size: 0.875rem;
+  }
+</style>

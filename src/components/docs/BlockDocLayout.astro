@@ -1,0 +1,40 @@
+---
+import ComponentDocLayout from './ComponentDocLayout.astro';
+import VisitShellShowcase from '../cleo/blocks/VisitShellShowcase';
+import type { MvpTag } from '../../config/registry';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  pageTitle?: string;
+  breadcrumbs?: Crumb[];
+  mvp?: MvpTag;
+  device?: string;
+  copyPath?: string;
+  entryId?: string;
+}
+
+const props = Astro.props;
+---
+
+<ComponentDocLayout
+  {...props}
+  withPreview={true}
+  stackedPreview={true}
+  previewContextLabel="In visit shell"
+>
+  <Fragment slot="contextPreview">
+    <VisitShellShowcase client:load />
+  </Fragment>
+  <slot name="whenToUse" slot="whenToUse" />
+  <slot name="anatomy" slot="anatomy" />
+  <slot name="doDont" slot="doDont" />
+  <slot name="specs" slot="specs" />
+  <slot name="preview" slot="preview" />
+  <slot name="registry" slot="registry" />
+</ComponentDocLayout>

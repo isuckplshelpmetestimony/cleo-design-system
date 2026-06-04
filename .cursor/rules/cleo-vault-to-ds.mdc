@@ -1,0 +1,19 @@
+---
+description: Cleo Vault scan → registry → implementation (automatic; no manual copy path)
+alwaysApply: true
+---
+
+# Cleo Vault → Design System (automatic)
+
+When the user mentions **Cleo Vault**, **Obsidian**, **wiki**, **second brain**, or pastes vault markdown:
+
+1. Use skill **cleo-second-brain-query** for vault reads (sequential thinking first).
+2. Match vault text to `src/config/registry.ts` via `vaultKeywords` or `src/lib/resolve-registry-from-text.ts`.
+3. Call `buildImplementationPlan(entryId)` and **open all returned `copyPaths` and doc sources** yourself.
+4. Apply `CLEO_DESIGN_SYSTEM_PROMPT.md` + `src/styles/tokens.css`. Read `/components/hitl` and `/components/ipad-constraints` when visit shell or HITL appears.
+
+**Never** ask Enzo to use the docs-site Copy path button, hunt the registry UI, or paste file paths manually.
+
+**Default** for Julie / daily note / iPad without a narrower hit: `visit-shell` and its `relatedIds`.
+
+Full playbook: `AGENTS.md` and site `/getting-started/cursor-vault`.

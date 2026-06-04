@@ -1,0 +1,59 @@
+---
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
+import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import ErrorWarningShowcase from '../../components/cleo/patterns/ErrorWarningShowcase';
+---
+
+<ComponentDocLayout
+  title="Error and warning states"
+  description="Errors are rare, plain, and actionable. Warnings are guardians, not alarms."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'Errors & warnings' },
+  ]}
+  mvp="core"
+  copyPath="src/components/cleo/patterns/ErrorWarningShowcase.tsx"
+  entryId="errors-warnings"
+  withPreview={true}
+>
+  <Fragment slot="whenToUse">
+    <h2>Warnings</h2>
+    <p>
+      Amber border and background tint. Plain English explanation. Suggested fix inline. Used for
+      denial risk — Frame 6.
+    </p>
+
+    <h2>Errors</h2>
+    <p>
+      Reserved for blocked submission or system failure. Muted red — never bright #FF0000. State what
+      happened and the single next step.
+    </p>
+
+    <h2>Never</h2>
+    <ul>
+      <li>Modal stacks for recoverable issues</li>
+      <li>Exclamation icons on every validation</li>
+      <li>Red for denial suggestions (that's what competitors do)</li>
+    </ul>
+
+    <PhilosophyCallout>
+      <p>
+        Frame 2 trauma around denials means red triggers fight-or-flight. Amber says "let's look at
+        this together."
+      </p>
+    </PhilosophyCallout>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <ErrorWarningShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable
+      title="Related registry"
+      filterIds={['errors-warnings', 'denial-guardian']}
+    />
+  </Fragment>
+</ComponentDocLayout>

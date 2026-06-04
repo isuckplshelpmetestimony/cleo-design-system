@@ -1,0 +1,32 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Engineers" description="Getting started for engineers — Cleo DS">
+  <div class="prose">
+    <h1>For engineers</h1>
+    <p class="page-lead">
+      Copy-owned components. Tokens are the source of truth. In Cursor, you should not hunt
+      file paths by hand.
+    </p>
+
+    <p>
+      <strong>Cursor + Cleo Vault:</strong> read the full automatic workflow on
+      <a href="/getting-started/cursor-vault">Cursor + Cleo Vault</a> (canonical; mirrors
+      <code>AGENTS.md</code>).
+    </p>
+
+    <h2>Implementation</h2>
+    <ol>
+      <li>Import CSS variables from <code>src/styles/tokens.css</code></li>
+      <li>Copy patterns from <code>src/components/cleo/</code> — do not fork colors</li>
+      <li>
+        <a href="/registry">Registry</a> lists <code>vaultKeywords</code> and implementation paths
+        for agents
+      </li>
+      <li>Blocks compose visit shell — start at <a href="/blocks/visit-shell">visit-shell</a></li>
+      <li>iPad Safari is acceptance device for Julie MVP</li>
+    </ol>
+    <p>Amber accent: once per page on the single most important action.</p>
+  </div>
+</DocsLayout>

@@ -21,3 +21,17 @@ export const colors = {
   green: '#3D6B4F',
   red: '#8B3A3A',
 } as const;
+
+export const status = {
+  draft: 'var(--status-draft)',
+  recording: 'var(--status-recording)',
+  charting: 'var(--status-charting)',
+  validate: 'var(--status-validate)',
+  signed: 'var(--status-signed)',
+} as const;
+
+export const surfaces = {
+  locked: 'var(--surface-locked)',
+  preview: 'var(--surface-preview)',
+  bandMuted: 'var(--surface-band-muted)',
+} as const;

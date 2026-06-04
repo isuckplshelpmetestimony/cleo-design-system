@@ -1,20 +1,28 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
 import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
 import StatusShowcase from '../../components/cleo/StatusShowcase.astro';
 ---
 
-<DocsLayout title="Status indicators" description="Cleo status components">
-  <div class="prose">
-    <h1>Status indicators</h1>
-    <p class="page-lead">Quiet chips that inform without alarming. Reserve red for true blockers only.</p>
-  </div>
+<ComponentDocLayout
+  title="Status indicators"
+  description="Quiet chips that inform without alarming. Reserve red for true blockers only."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'Status indicators' },
+  ]}
+  mvp="core"
+  copyPath="src/components/cleo/StatusBadge.tsx"
+  entryId="status"
+>
+  <Fragment slot="preview">
+    <div class="wide-band">
+      <StatusShowcase />
+    </div>
+  </Fragment>
 
-  <div class="wide-band">
-    <StatusShowcase />
-  </div>
-
-  <div class="prose">
+  <Fragment slot="specs">
     <h2>Specifications</h2>
     <table class="token-table">
       <tbody>
@@ -40,5 +48,5 @@ import StatusShowcase from '../../components/cleo/StatusShowcase.astro';
     <PhilosophyCallout>
       <p>Status color supports scanning, not emotion. A draft note is information; a blocked submission is the only state that warrants urgency.</p>
     </PhilosophyCallout>
-  </div>
-</DocsLayout>
+  </Fragment>
+</ComponentDocLayout>

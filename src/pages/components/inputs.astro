@@ -1,20 +1,28 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
 import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
 import InputShowcase from '../../components/cleo/InputShowcase.astro';
 ---
 
-<DocsLayout title="Form inputs" description="Cleo form input components">
-  <div class="prose">
-    <h1>Form inputs</h1>
-    <p class="page-lead">Focused inputs feel calm, not urgent. No glow — glow reads as alert to an already vigilant user.</p>
-  </div>
+<ComponentDocLayout
+  title="Form inputs"
+  description="Focused inputs feel calm, not urgent. No glow — glow reads as alert to an already vigilant user."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'Form inputs' },
+  ]}
+  mvp="core"
+  copyPath="src/components/cleo/Input.tsx"
+  entryId="inputs"
+>
+  <Fragment slot="preview">
+    <div class="wide-band">
+      <InputShowcase />
+    </div>
+  </Fragment>
 
-  <div class="wide-band">
-    <InputShowcase />
-  </div>
-
-  <div class="prose">
+  <Fragment slot="specs">
     <h2>Specifications</h2>
     <table class="token-table">
       <tbody>
@@ -55,5 +63,5 @@ import InputShowcase from '../../components/cleo/InputShowcase.astro';
     <PhilosophyCallout>
       <p>A focused field should feel like a clean piece of paper ready for clinical thought — not a system demanding immediate action.</p>
     </PhilosophyCallout>
-  </div>
-</DocsLayout>
+  </Fragment>
+</ComponentDocLayout>

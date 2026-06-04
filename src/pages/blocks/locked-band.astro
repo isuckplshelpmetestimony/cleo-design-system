@@ -1,0 +1,52 @@
+---
+import BlockDocLayout from '../../components/docs/BlockDocLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+import LockedBandShowcase from '../../components/cleo/blocks/LockedBandShowcase';
+---
+
+<BlockDocLayout
+  title="Locked band"
+  description="Billing unavailable until treatment section is complete — muted band, not a blocking modal."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Locked band' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/LockedBandShowcase.tsx"
+  entryId="locked-band"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Bottom of the visit shell frame when Bill is locked</li>
+      <li>Explains why billing suggestions are unavailable — no modal interruption</li>
+      <li>Unlocks when treatment section is marked complete</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>Muted red tint band (<code>--color-red</code>) with lock icon and plain language</li>
+        <li>Full-width within the visit frame</li>
+        <li>Hairline border — not a full-screen alarm</li>
+      </ul>
+      <ul slot="dont">
+        <li>Bright neon red or modal blocking the whole note</li>
+        <li>Hiding the Bill tab entirely</li>
+        <li>Silent lock with no explanation</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <LockedBandShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['locked-band', 'visit-shell']} />
+  </Fragment>
+</BlockDocLayout>

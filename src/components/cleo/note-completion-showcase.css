@@ -166,3 +166,11 @@
   width: 14px;
   height: 14px;
 }
+
+.note-flow-arc__wave-bar {
+  fill: var(--color-slate);
+}
+
+.note-flow-arc__check-mark {
+  stroke: var(--color-amber);
+}

@@ -1,0 +1,60 @@
+---
+import NoteCompletionBlockLayout from '../../components/docs/NoteCompletionBlockLayout.astro';
+import DoDont from '../../components/docs/DoDont.astro';
+import RecordInNoteShowcase from '../../components/cleo/blocks/RecordInNoteShowcase';
+import RegistryTable from '../../components/docs/RegistryTable.astro';
+---
+
+<NoteCompletionBlockLayout
+  title="Record in note"
+  description="Capture the visit inside the open daily note on iPad — then advance to charting on the visit status strip. Signing is a later validate step, not part of capture."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Blocks', href: '/registry' },
+    { label: 'Record in note' },
+  ]}
+  mvp="core"
+  device="iPad landscape"
+  copyPath="src/components/cleo/blocks/RecordInNoteShowcase.tsx"
+  entryId="note-completion"
+>
+  <Fragment slot="whenToUse">
+    <h2>When to use</h2>
+    <ul>
+      <li>Julie MVP loop step 3 — record inside the note on iPad, not a global recorder</li>
+      <li>Status strip on <strong>Recording</strong> while audio is captured for this visit</li>
+      <li>Primary forward action: <strong>Proceed to charting</strong> — moves to Treatment / SOAP tabs</li>
+      <li>Validate and sign happen later (overlays 15–16 on the visit shell)</li>
+    </ul>
+    <p>
+      The five-step emotional arc (record → transcribe → review → sign → complete) lives on
+      <a href="/components/note-completion">Note completion flow</a> for motion and legacy mobile
+      reference — not as the iPad capture screen.
+    </p>
+  </Fragment>
+
+  <Fragment slot="doDont">
+    <DoDont>
+      <ul slot="do">
+        <li>Minimal UI — slate waveform, “Listening…” in steel caps</li>
+        <li>One primary CTA: Proceed to charting</li>
+        <li>Recording pole active on the status strip</li>
+        <li>Audio bound to this patient, this visit, this date</li>
+      </ul>
+      <ul slot="dont">
+        <li>Sign and submit on the capture screen</li>
+        <li>Separate /recording route as the primary Julie path</li>
+        <li>Busy dashboards or red alarm states during listen</li>
+        <li>Amber CTA on capture (reserve amber for sign later)</li>
+      </ul>
+    </DoDont>
+  </Fragment>
+
+  <Fragment slot="preview">
+    <RecordInNoteShowcase client:load />
+  </Fragment>
+
+  <Fragment slot="registry">
+    <RegistryTable title="Related registry" filterIds={['note-completion', 'visit-shell', 'status-strip']} />
+  </Fragment>
+</NoteCompletionBlockLayout>

@@ -179,9 +179,63 @@ A licensed PT (often clinic lead), 8–15 years in practice. Cognitively exhaust
 
 ## Documentation / marketing site structure (if applicable)
 
-Typical IA: Introduction (what is Cleo, emotional brief, journey storyboard, Quiet Authority, how to use) → Foundations (color, type, spacing, motion, illustration) → Components → Patterns → Voice.
+Typical IA: Introduction → **Principles** (Consistency · Modularity · Circumnavigability) → Getting started (**Cursor + Cleo Vault** for agents) → Foundations (including **Theming**) → **Registry** hub → Components → **Blocks** → Patterns (including **HITL**, **iPad constraints**) → Voice.
 
-**Page pattern:** Prose intro (680px) → optional wide showcase band → prose specs + philosophy callout (amber left border, cream tint bg).
+**Page pattern:** `ComponentDocLayout` — prose intro (680px), optional sticky live preview (block pages), copy path, registry table footer, related links. Block pages use two-column doc + preview grid above 1100px.
+
+**Registry:** `src/config/registry.ts` drives nav, `/registry` hub, and related links. Each entry has `vaultKeywords` for agent resolution from Cleo Vault / Obsidian text. Status: Ready · In progress · Planned.
+
+**Agents (Cursor — do not ask the engineer to copy paths):** When scanning Cleo Vault, read `AGENTS.md` and site `/getting-started/cursor-vault`, match `vaultKeywords` (or `src/lib/resolve-registry-from-text.ts`), then open all `copyPath` files and related docs automatically. The docs-site “Copy path” control is for human browsing only; full keyword map lives on `/registry` and `/getting-started/cursor-vault`.
+
+**Active branch:** `vault-experiments` — Julie MVP visit shell and doc spine.
+
+---
+
+## Design system principles
+
+1. **Consistency** — one token spine (`src/styles/tokens.css`), one voice, one geometry. Amber once per screen.
+2. **Modularity** — tokens → components → blocks → patterns. Blocks compose from sub-primitives.
+3. **Circumnavigability** — registry hub, breadcrumbs, related links. In product: river geometry with escape hatches.
+
+**Closed workflow geometry (five rules):** one visit shell · one primary forward CTA · poles visible (status strip) · circumnavigable tabs · human accepts AI (HITL).
+
+---
+
+## Blocks (Julie MVP)
+
+| Block | Path | Status |
+|-------|------|--------|
+| Visit shell | `src/components/cleo/blocks/VisitShellShowcase.tsx` | Ready — iPad daily note surface |
+| Record in note | `src/components/cleo/blocks/RecordInNoteShowcase.tsx` | Ready — in-note capture → Proceed to charting |
+| Note completion (arc) | `src/components/cleo/NoteCompletionFlow.tsx` | Ready — emotional / mobile reference on `/components/note-completion` |
+| Status strip | `src/components/cleo/blocks/StatusStripShowcase.tsx` | Ready |
+| Stepper | `src/components/cleo/blocks/VisitStepperShowcase.tsx` | Ready |
+| Tab bar | `src/components/cleo/blocks/VisitTabBarShowcase.tsx` | Ready |
+| Treatment table | `src/components/cleo/blocks/TreatmentTableShowcase.tsx` | Ready |
+| Locked band | `src/components/cleo/blocks/LockedBandShowcase.tsx` | Ready |
+| Validate and sign | `src/components/cleo/blocks/ValidateSignShowcase.tsx` | Ready |
+
+**Visit shell rules:** Quiet Authority palette only. One amber accent max (active tab underline OR primary CTA). Per-row skilled comments. Billing locked until treatment complete. Doc: `/blocks/visit-shell`.
+
+---
+
+## Semantic tokens (visit shell + HITL)
+
+| Token | Use |
+|-------|-----|
+| `--status-draft` | Status strip — draft pole |
+| `--status-recording` | Status strip — recording |
+| `--status-charting` | Status strip — charting |
+| `--status-validate` | Status strip — ready to validate |
+| `--status-signed` | Status strip — signed |
+| `--surface-locked` | Locked band — muted red tint (`--color-red`) |
+| `--locked-band-border` | Locked band border |
+| `--locked-band-text` | Locked band text and icon |
+| `--surface-preview` | Doc preview panel |
+| `--chip-suggested-bg` | HITL suggestion chip fill |
+| `--chip-suggested-border` | HITL suggestion chip border |
+
+Documented on `/foundations/theming`.
 
 ---
 

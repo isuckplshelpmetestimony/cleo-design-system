@@ -1,20 +1,28 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
+import ComponentDocLayout from '../../components/docs/ComponentDocLayout.astro';
 import PhilosophyCallout from '../../components/docs/PhilosophyCallout.astro';
 import NavShowcase from '../../components/cleo/NavShowcase.astro';
 ---
 
-<DocsLayout title="Navigation" description="Cleo navigation patterns">
-  <div class="prose">
-    <h1>Navigation</h1>
-    <p class="page-lead">Minimal slate links. Active state uses amber — bottom underline for top nav, left bar for sidebar. No background fills.</p>
-  </div>
+<ComponentDocLayout
+  title="Navigation"
+  description="Minimal slate links. Active state uses amber — bottom underline for top nav, left bar for sidebar. No background fills."
+  breadcrumbs={[
+    { label: 'Registry', href: '/registry' },
+    { label: 'Components', href: '/registry' },
+    { label: 'Navigation' },
+  ]}
+  mvp="core"
+  copyPath="src/components/cleo/NavExample.tsx"
+  entryId="navigation"
+>
+  <Fragment slot="preview">
+    <div class="wide-band">
+      <NavShowcase />
+    </div>
+  </Fragment>
 
-  <div class="wide-band">
-    <NavShowcase />
-  </div>
-
-  <div class="prose">
+  <Fragment slot="specs">
     <h2>Specifications</h2>
     <table class="token-table">
       <tbody>
@@ -36,5 +44,5 @@ import NavShowcase from '../../components/cleo/NavShowcase.astro';
     <PhilosophyCallout>
       <p>Wayfinding should disappear into the background. The therapist's attention belongs to notes and patients — Frame 1–3 exhaustion means every chrome element is a tax.</p>
     </PhilosophyCallout>
-  </div>
-</DocsLayout>
+  </Fragment>
+</ComponentDocLayout>
